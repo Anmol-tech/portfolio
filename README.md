@@ -17,21 +17,29 @@ A modern, responsive portfolio website showcasing my work as a Full Stack Develo
 ## Setup
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/Anmol-tech/portfolio.git
 cd portfolio
 ```
 
 2. Update the Formspree endpoint in `index.html`:
+
 ```html
-<form class="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
+<form
+	class="contact-form"
+	action="https://formspree.io/f/your-formspree-id"
+	method="POST"
+></form>
 ```
 
 3. Replace images:
+
 - Add your university logos in `/images/`
 - Update image paths in `index.html`
 
 4. Customize content:
+
 - Update personal information in `index.html`
 - Modify theme colors in `:root` CSS variables
 - Add/remove sections as needed
@@ -42,7 +50,7 @@ cd portfolio
 /portfolio
 ├── index.html          # Main portfolio page
 ├── thanks.html         # Form submission success page
-├── images/            
+├── images/
 │   ├── scu-logo.png    # University logos
 │   └── ggsipu-logo.png
 └── README.md           # Project documentation
@@ -51,6 +59,7 @@ cd portfolio
 ## Deployment
 
 This is a static website that can be hosted on:
+
 - GitHub Pages
 - Netlify
 - Vercel
