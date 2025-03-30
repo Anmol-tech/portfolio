@@ -155,6 +155,56 @@
 				padding: 100px 0;
 			}
 
+			.hero-container {
+				display: flex;
+				align-items: center;
+				gap: 50px;
+			}
+
+			.hero-content {
+				flex: 1;
+			}
+
+			.profile-image-container {
+				flex-shrink: 0;
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				position: relative;
+				border: 2px solid var(--primary);
+				transition: transform 0.3s ease;
+			}
+
+			.profile-image-container:hover {
+				transform: translateY(-5px);
+			}
+
+			.profile-image {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				object-fit: cover;
+				filter: grayscale(50%);
+				transition: filter 0.3s ease;
+			}
+
+			.profile-image:hover {
+				filter: grayscale(0%);
+			}
+
+			@media (max-width: 768px) {
+				.hero-container {
+					flex-direction: column-reverse;
+					text-align: center;
+				}
+
+				.profile-image-container {
+					width: 200px;
+					height: 200px;
+					margin-bottom: 30px;
+				}
+			}
+
 			.hero-content h1 {
 				font-size: clamp(2rem, 5vw, 4rem);
 				color: var(--light);
@@ -243,21 +293,37 @@
 			.item-header {
 				display: flex;
 				justify-content: space-between;
+				align-items: flex-start;
 				margin-bottom: 15px;
-				flex-wrap: wrap;
-				gap: 10px;
+				gap: 15px;
+			}
+
+			.item-header > div {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+				flex: 1;
 			}
 
 			.item-title {
-				font-weight: bold;
-				font-size: 1.2rem;
+				font-weight: 600;
+				font-size: 1.3rem;
 				color: var(--light);
+				display: block;
+				line-height: 1.4;
+			}
+
+			.item-title i {
+				margin-right: 12px;
+				color: var(--primary);
 			}
 
 			.item-subtitle {
 				color: var(--primary);
-				margin-top: 5px;
-				font-size: 0.9rem;
+				font-size: 1rem;
+				display: flex;
+				align-items: center;
+				gap: 8px;
 			}
 
 			.item-date {
@@ -291,53 +357,125 @@
 				color: var(--primary);
 			}
 
+			.skill-list li i {
+				margin-right: 10px;
+				color: var(--primary);
+				width: 20px;
+				text-align: center;
+			}
+
 			.skills-container {
 				display: grid;
 				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 				gap: 20px;
+				position: relative;
+				perspective: 1000px;
 			}
 
 			.skill-category {
 				background-color: var(--dark);
 				padding: 25px;
 				border-radius: 5px;
-				transition: transform 0.3s;
+				transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				position: relative;
+				overflow: hidden;
+				transform-style: preserve-3d;
+				border: 2px solid var(--primary);
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+				opacity: 0;
+			}
+
+			.skill-category:nth-child(odd) {
+				transform: rotateX(5deg);
+			}
+
+			.skill-category:nth-child(even) {
+				transform: rotateX(-5deg);
+			}
+
+			.skill-category:nth-child(3n) {
+				animation: float 3s ease-in-out infinite;
+			}
+
+			.skill-category:nth-child(3n + 1) {
+				animation: float 3s ease-in-out infinite 1s;
+			}
+
+			.skill-category:nth-child(3n + 2) {
+				animation: float 3s ease-in-out infinite 2s;
+			}
+
+			@keyframes float {
+				0% {
+					transform: translateY(0) rotateX(5deg);
+				}
+				50% {
+					transform: translateY(-10px) rotateX(-5deg);
+				}
+				100% {
+					transform: translateY(0) rotateX(5deg);
+				}
 			}
 
 			.skill-category:hover {
-				transform: translateY(-5px);
+				transform: translateY(-8px) rotateX(0) scale(1.02);
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+				z-index: 1;
 			}
 
-			.skill-category h3 {
-				margin-bottom: 15px;
-				color: var(--light);
-				font-size: 1.1rem;
-				display: flex;
-				align-items: center;
-				gap: 8px;
+			.skill-category::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					135deg,
+					transparent 0%,
+					rgba(var(--secondary-rgb), 0.1) 50%,
+					transparent 100%
+				);
+				transform: translateX(-100%);
+				transition: transform 0.6s;
 			}
 
-			.skill-category h3 i {
-				color: var(--primary);
+			.skill-category:hover::after {
+				transform: translateX(100%);
 			}
 
-			.skill-list {
-				list-style-type: none;
+			.skill-category.visible {
+				animation: skillFadeIn 0.6s ease forwards;
 			}
 
 			.skill-list li {
-				margin-bottom: 10px;
-				position: relative;
-				padding-left: 25px;
-				color: var(--gray);
+				opacity: 0.8;
+				transform: translateX(-10px);
+				transition: all 0.3s ease;
 			}
 
-			.skill-list li:before {
-				content: "▹";
-				color: var(--primary);
-				position: absolute;
-				left: 0;
-				font-size: 1.1rem;
+			.skill-category:hover .skill-list li {
+				opacity: 1;
+				transform: translateX(0);
+			}
+
+			.skill-list li:nth-child(1) {
+				transition-delay: 0.1s;
+			}
+			.skill-list li:nth-child(2) {
+				transition-delay: 0.2s;
+			}
+			.skill-list li:nth-child(3) {
+				transition-delay: 0.3s;
+			}
+			.skill-list li:nth-child(4) {
+				transition-delay: 0.4s;
+			}
+			.skill-list li:nth-child(5) {
+				transition-delay: 0.5s;
+			}
+			.skill-list li:nth-child(6) {
+				transition-delay: 0.6s;
 			}
 
 			.projects-grid {
@@ -350,14 +488,44 @@
 				background-color: var(--dark);
 				border-radius: 5px;
 				padding: 25px;
-				transition: all 0.3s;
+				transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 				display: flex;
 				flex-direction: column;
 				height: 100%;
+				position: relative;
+				overflow: hidden;
+				border: 1px solid transparent;
 			}
 
 			.project-card:hover {
-				transform: translateY(-7px);
+				transform: translateY(-8px);
+				border-color: var(--primary);
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+			}
+
+			.project-card::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border-radius: 5px;
+				padding: 2px;
+				background: linear-gradient(
+					45deg,
+					transparent,
+					var(--primary),
+					transparent
+				);
+				-webkit-mask: linear-gradient(#fff 0 0) content-box,
+					linear-gradient(#fff 0 0);
+				mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+				-webkit-mask-composite: xor;
+				mask-composite: exclude;
+				opacity: 0;
+				transition: opacity 0.4s ease;
+			}
+
+			.project-card:hover::before {
+				opacity: 1;
 			}
 
 			.project-header {
@@ -553,9 +721,13 @@
 				width: 120px;
 				height: auto;
 				display: block;
-				margin: 0 auto 20px;
+				margin: 0 auto;
+				margin-bottom: 30px;
+				padding: 10px;
 				filter: grayscale(100%) brightness(150%);
 				transition: all 0.3s ease;
+				max-height: 100px;
+				object-fit: contain;
 			}
 
 			.education-item:hover .university-logo {
@@ -580,6 +752,38 @@
 				.timeline-date {
 					left: -120px !important;
 				}
+
+				.header-content {
+					flex-direction: column;
+					gap: 15px;
+				}
+
+				nav ul {
+					flex-wrap: wrap;
+					justify-content: center;
+					gap: 20px;
+				}
+
+				.theme-toggle {
+					margin-left: 0;
+				}
+
+				.projects-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.skill-category {
+					transform: none !important;
+					animation: none !important;
+				}
+
+				.hero-content h1 {
+					font-size: clamp(1.8rem, 4vw, 3.5rem);
+				}
+
+				.hero-content h2 {
+					font-size: clamp(1.2rem, 2.5vw, 2rem);
+				}
 			}
 
 			.contact-form {
@@ -603,18 +807,24 @@
 				width: 100%;
 				padding: 12px;
 				background: var(--dark);
-				border: 1px solid var(--gray);
+				border: 2px solid transparent;
 				border-radius: 4px;
 				color: var(--light);
 				font-size: 0.9rem;
-				transition: all 0.3s;
+				font-family: "Fira Code", monospace;
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+
+			.form-group input:hover,
+			.form-group textarea:hover {
+				background: var(--code-bg);
 			}
 
 			.form-group input:focus,
 			.form-group textarea:focus {
-				outline: none;
+				background: var(--code-bg);
 				border-color: var(--primary);
-				box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
+				box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
 			}
 
 			.form-group textarea {
@@ -626,6 +836,17 @@
 				width: 100%;
 				margin-top: 20px;
 			}
+
+			@keyframes skillFadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -635,7 +856,6 @@
 					<a href="#" class="logo">anmol.sharma</a>
 					<nav>
 						<ul>
-							<li><a href="#about">About</a></li>
 							<li><a href="#education">Education</a></li>
 							<li><a href="#experience">Experience</a></li>
 							<li><a href="#projects">Projects</a></li>
@@ -654,41 +874,34 @@
 
 		<section class="hero">
 			<div class="container">
-				<div class="hero-content">
-					<h1>Hi, I'm <span>Anmol Sharma</span></h1>
-					<h2>A Full Stack Developer with a passion for AI Innovation</h2>
-					<p>
-						I'm a Computer Science graduate student merging full-stack expertise
-						with AI capabilities. Currently focused on building intelligent web
-						applications and developing scalable AI-powered solutions that
-						bridge the gap between traditional development and machine learning.
-					</p>
-					<a href="#projects" class="btn">View My Work</a>
+				<div class="hero-container">
+					<div class="hero-content">
+						<h1>Hi, I'm <span>Anmol Sharma</span></h1>
+						<h2>A Full Stack Developer with a passion for AI Innovation</h2>
+						<p>
+							I'm a Computer Science graduate student merging full-stack
+							expertise with AI capabilities. Currently focused on building
+							intelligent web applications and developing scalable AI-powered
+							solutions that bridge the gap between traditional development and
+							machine learning.
+						</p>
+						<a href="#projects" class="btn">View My Work</a>
+					</div>
+					<div class="profile-image-container">
+						<img
+							src="images/profile.png"
+							alt="Anmol Sharma"
+							class="profile-image"
+						/>
+					</div>
 				</div>
-			</div>
-		</section>
-
-		<section id="about" class="section">
-			<div class="container">
-				<div class="section-title">
-					<span class="number">01.</span>
-					<h2>About Me</h2>
-					<div class="line"></div>
-				</div>
-
-				<p style="margin-top: 30px">
-					I'm passionate about solving complex problems through code and
-					creating efficient, scalable solutions. My experience ranges from
-					building full-stack applications to optimizing cloud infrastructure
-					and implementing machine learning models.
-				</p>
 			</div>
 		</section>
 
 		<section id="education" class="section">
 			<div class="container">
 				<div class="section-title">
-					<span class="number">02.</span>
+					<span class="number">01.</span>
 					<h2>Education</h2>
 					<div class="line"></div>
 				</div>
@@ -700,14 +913,18 @@
 							src="images/scu-logo.png"
 							alt="Santa Clara University"
 							class="university-logo"
-							style="max-height: 80px"
 						/>
 						<div class="item-header">
 							<div>
-								<span class="item-title">Santa Clara University</span>
-								<span class="item-subtitle">M.S. Computer Science</span>
+								<span class="item-title"
+									><i class="fas fa-graduation-cap"></i> Santa Clara
+									University</span
+								>
+								<span class="item-subtitle"
+									><i class="fas fa-award"></i> M.S. Computer Science</span
+								>
 							</div>
-							<span class="item-date">2025 - 2027</span>
+							<span class="item-date">2025</span>
 						</div>
 						<div class="item-location">
 							<i class="fas fa-map-marker-alt"></i> Santa Clara, California
@@ -723,12 +940,15 @@
 							src="images/ggsipu-logo.png"
 							alt="GGSIPU"
 							class="university-logo"
-							style="max-height: 80px"
 						/>
 						<div class="item-header">
 							<div>
-								<span class="item-title">GGSIPU</span>
-								<span class="item-subtitle">B.Tech Computer Science</span>
+								<span class="item-title"
+									><i class="fas fa-university"></i> GGSIPU</span
+								>
+								<span class="item-subtitle"
+									><i class="fas fa-award"></i> B.Tech Computer Science</span
+								>
 							</div>
 							<span class="item-date">2018 - 2022</span>
 						</div>
@@ -752,7 +972,7 @@
 		<section id="experience" class="section">
 			<div class="container">
 				<div class="section-title">
-					<span class="number">03.</span>
+					<span class="number">02.</span>
 					<h2>Experience</h2>
 					<div class="line"></div>
 				</div>
@@ -876,15 +1096,8 @@
 								<i class="fas fa-folder"></i>
 							</div>
 							<div class="project-links">
-								<a
-									href="https://github.com/Anmol-tech/Q-Stream-Player"
-									target="_blank"
+								<a href="https://github.com/Q-Stream/Q-Stream" target="_blank"
 									><i class="fab fa-github"></i
-								></a>
-								<a
-									href="https://anmol-tech.github.io/Q-Stream-Player"
-									target="_blank"
-									><i class="fas fa-external-link-alt"></i
 								></a>
 							</div>
 						</div>
@@ -908,18 +1121,6 @@
 						<div class="project-header">
 							<div class="project-folder">
 								<i class="fas fa-folder"></i>
-							</div>
-							<div class="project-links">
-								<a
-									href="https://github.com/Anmol-tech/Amibo-Chatbot"
-									target="_blank"
-									><i class="fab fa-github"></i
-								></a>
-								<a
-									href="https://anmol-tech.github.io/Amibo-Demo"
-									target="_blank"
-									><i class="fas fa-external-link-alt"></i
-								></a>
 							</div>
 						</div>
 						<h3 class="project-title">Amibo Chatbot</h3>
@@ -952,70 +1153,70 @@
 					<div class="skill-category">
 						<h3><i class="fas fa-code"></i> Languages</h3>
 						<ul class="skill-list">
-							<li>Python</li>
-							<li>JavaScript/TypeScript</li>
-							<li>Java</li>
-							<li>C++</li>
-							<li>SQL</li>
-							<li>Dart</li>
+							<li><i class="fab fa-python"></i> Python</li>
+							<li><i class="fab fa-js"></i> JavaScript/TypeScript</li>
+							<li><i class="fab fa-java"></i> Java</li>
+							<li><i class="fas fa-plus-square"></i> C++</li>
+							<li><i class="fas fa-database"></i> SQL</li>
+							<li><i class="fas fa-mobile-alt"></i> Dart</li>
 						</ul>
 					</div>
 
 					<div class="skill-category">
 						<h3><i class="fas fa-laptop-code"></i> Frontend</h3>
 						<ul class="skill-list">
-							<li>React</li>
-							<li>Next.js</li>
-							<li>Angular</li>
-							<li>HTML/CSS</li>
-							<li>Tailwind</li>
-							<li>Flutter</li>
+							<li><i class="fab fa-react"></i> React</li>
+							<li><i class="fab fa-react"></i> Next.js</li>
+							<li><i class="fab fa-angular"></i> Angular</li>
+							<li><i class="fab fa-html5"></i> HTML/CSS</li>
+							<li><i class="fab fa-css3"></i> Tailwind</li>
+							<li><i class="fab fa-google"></i> Flutter</li>
 						</ul>
 					</div>
 
 					<div class="skill-category">
 						<h3><i class="fas fa-server"></i> Backend</h3>
 						<ul class="skill-list">
-							<li>Django</li>
-							<li>FastAPI</li>
-							<li>Flask</li>
-							<li>Node.js</li>
-							<li>GraphQL</li>
-							<li>REST APIs</li>
+							<li><i class="fab fa-python"></i> Django</li>
+							<li><i class="fas fa-bolt"></i> FastAPI</li>
+							<li><i class="fab fa-python"></i> Flask</li>
+							<li><i class="fab fa-node-js"></i> Node.js</li>
+							<li><i class="fas fa-project-diagram"></i> GraphQL</li>
+							<li><i class="fas fa-exchange-alt"></i> REST APIs</li>
 						</ul>
 					</div>
 
 					<div class="skill-category">
 						<h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
 						<ul class="skill-list">
-							<li>AWS</li>
-							<li>Google Cloud</li>
-							<li>Docker</li>
-							<li>Kubernetes</li>
-							<li>CI/CD</li>
-							<li>Terraform</li>
+							<li><i class="fab fa-aws"></i> AWS</li>
+							<li><i class="fab fa-google"></i> Google Cloud</li>
+							<li><i class="fab fa-docker"></i> Docker</li>
+							<li><i class="fas fa-dharmachakra"></i> Kubernetes</li>
+							<li><i class="fas fa-infinity"></i> CI/CD</li>
+							<li><i class="fas fa-cubes"></i> Terraform</li>
 						</ul>
 					</div>
 
 					<div class="skill-category">
 						<h3><i class="fas fa-database"></i> Databases</h3>
 						<ul class="skill-list">
-							<li>PostgreSQL</li>
-							<li>MongoDB</li>
-							<li>Redis</li>
-							<li>Firebase</li>
-							<li>BigQuery</li>
+							<li><i class="fas fa-database"></i> PostgreSQL</li>
+							<li><i class="fas fa-leaf"></i> MongoDB</li>
+							<li><i class="fas fa-cube"></i> Redis</li>
+							<li><i class="fas fa-fire"></i> Firebase</li>
+							<li><i class="fab fa-google"></i> BigQuery</li>
 						</ul>
 					</div>
 
 					<div class="skill-category">
 						<h3><i class="fas fa-brain"></i> ML/AI</h3>
 						<ul class="skill-list">
-							<li>TensorFlow</li>
-							<li>OpenCV</li>
-							<li>Pandas</li>
-							<li>NumPy</li>
-							<li>NLP</li>
+							<li><i class="fas fa-microchip"></i> TensorFlow</li>
+							<li><i class="fas fa-eye"></i> OpenCV</li>
+							<li><i class="fas fa-table"></i> Pandas</li>
+							<li><i class="fas fa-calculator"></i> NumPy</li>
+							<li><i class="fas fa-comments"></i> NLP</li>
 						</ul>
 					</div>
 				</div>
@@ -1118,7 +1319,6 @@
 				const currentTheme =
 					document.documentElement.getAttribute("data-theme");
 				const newTheme = currentTheme === "dark" ? "light" : "dark";
-
 				document.documentElement.setAttribute("data-theme", newTheme);
 				localStorage.setItem("theme", newTheme);
 				updateThemeIcon(newTheme);
@@ -1137,6 +1337,35 @@
 					header.classList.remove("scrolled");
 				}
 			});
+
+			// Add smooth scroll for navigation links
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener("click", function (e) {
+					e.preventDefault();
+					document.querySelector(this.getAttribute("href")).scrollIntoView({
+						behavior: "smooth",
+					});
+				});
+			});
+
+			// Add intersection observer for skill categories
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry, index) => {
+						if (entry.isIntersecting) {
+							entry.target.style.animationDelay = `${index * 0.1}s`;
+							entry.target.classList.add("visible");
+						}
+					});
+				},
+				{
+					threshold: 0.2,
+				}
+			);
+
+			document
+				.querySelectorAll(".skill-category")
+				.forEach((el) => observer.observe(el));
 		</script>
 	</body>
 </html>
