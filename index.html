@@ -9,845 +9,11 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 		/>
-		<style>
-			:root {
-				/* Dark theme (default) */
-				--primary: #64ffda;
-				--secondary: #0a192f;
-				--secondary-rgb: 10, 25, 47;
-				--dark: #112240;
-				--light: #ccd6f6;
-				--gray: #8892b0;
-				--accent: #ff6482;
-				--code-bg: #0e1a2b;
-			}
-
-			:root[data-theme="light"] {
-				--primary: #00b887;
-				--secondary: #ffffff;
-				--secondary-rgb: 255, 255, 255;
-				--dark: #f0f5ff;
-				--light: #2a2f4c;
-				--gray: #4a5568;
-				--accent: #ff6482;
-				--code-bg: #f5f5f5;
-			}
-
-			/* Add theme toggle button styles */
-			.theme-toggle {
-				background: none;
-				border: none;
-				color: var(--light);
-				font-size: 1.2rem;
-				cursor: pointer;
-				padding: 5px;
-				margin-left: 20px;
-				transition: color 0.3s;
-			}
-
-			.theme-toggle:hover {
-				color: var(--primary);
-			}
-
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-				font-family: "Fira Code", "Courier New", monospace;
-			}
-
-			body {
-				background-color: var(--secondary);
-				color: var(--light);
-				line-height: 1.6;
-				scroll-behavior: smooth;
-				padding-top: 90px;
-			}
-
-			::selection {
-				background: var(--primary);
-				color: var(--secondary);
-			}
-
-			.container {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 20px;
-			}
-
-			header {
-				background-color: rgba(var(--secondary-rgb), 0.8);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				padding: 20px 0;
-				position: fixed;
-				width: 100%;
-				top: 0;
-				z-index: 1000;
-				transition: all 0.3s ease;
-			}
-
-			header.scrolled {
-				padding: 15px 0;
-				box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-			}
-
-			.header-content {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-
-			.logo {
-				color: var(--primary);
-				font-weight: bold;
-				font-size: 1.5rem;
-				text-decoration: none;
-			}
-
-			.logo::before {
-				content: "<";
-				color: var(--gray);
-			}
-
-			.logo::after {
-				content: ">";
-				color: var(--gray);
-			}
-
-			nav ul {
-				display: flex;
-				list-style: none;
-				gap: 30px;
-			}
-
-			nav a {
-				color: var(--light);
-				text-decoration: none;
-				font-size: 0.9rem;
-				transition: color 0.3s;
-				position: relative;
-			}
-
-			nav a:hover {
-				color: var(--primary);
-			}
-
-			nav a::after {
-				content: "";
-				position: absolute;
-				width: 0;
-				height: 2px;
-				bottom: -5px;
-				left: 0;
-				background-color: var(--primary);
-				transition: width 0.3s;
-			}
-
-			nav a:hover::after {
-				width: 100%;
-			}
-
-			.hero {
-				min-height: 80vh;
-				display: flex;
-				align-items: center;
-				padding: 100px 0;
-			}
-
-			.hero-container {
-				display: flex;
-				align-items: center;
-				gap: 50px;
-			}
-
-			.hero-content {
-				flex: 1;
-			}
-
-			.profile-image-container {
-				flex-shrink: 0;
-				width: 300px;
-				height: 300px;
-				border-radius: 50%;
-				position: relative;
-				border: 2px solid var(--primary);
-				transition: transform 0.3s ease;
-			}
-
-			.profile-image-container:hover {
-				transform: translateY(-5px);
-			}
-
-			.profile-image {
-				width: 100%;
-				height: 100%;
-				border-radius: 50%;
-				object-fit: cover;
-				filter: grayscale(50%);
-				transition: filter 0.3s ease;
-			}
-
-			.profile-image:hover {
-				filter: grayscale(0%);
-			}
-
-			@media (max-width: 768px) {
-				.hero-container {
-					flex-direction: column-reverse;
-					text-align: center;
-				}
-
-				.profile-image-container {
-					width: 200px;
-					height: 200px;
-					margin-bottom: 30px;
-				}
-			}
-
-			.hero-content h1 {
-				font-size: clamp(2rem, 5vw, 4rem);
-				color: var(--light);
-				margin-bottom: 20px;
-			}
-
-			.hero-content h1 span {
-				color: var(--primary);
-			}
-
-			.hero-content h2 {
-				font-size: clamp(1.5rem, 3vw, 2.5rem);
-				color: var(--gray);
-				margin-bottom: 30px;
-			}
-
-			.hero-content p {
-				max-width: 600px;
-				margin-bottom: 40px;
-				color: var(--gray);
-				line-height: 1.8;
-			}
-
-			.btn {
-				display: inline-block;
-				padding: 12px 28px;
-				background: transparent;
-				color: var(--primary);
-				border: 1px solid var(--primary);
-				border-radius: 4px;
-				text-decoration: none;
-				font-size: 0.9rem;
-				transition: all 0.3s;
-				cursor: pointer;
-			}
-
-			.btn:hover {
-				background: rgba(100, 255, 218, 0.1);
-				transform: translateY(-3px);
-			}
-
-			.section {
-				padding: 100px 0;
-			}
-
-			.section-title {
-				display: flex;
-				align-items: center;
-				margin-bottom: 50px;
-				color: var(--light);
-			}
-
-			.section-title h2 {
-				font-size: 2rem;
-				margin-right: 20px;
-			}
-
-			.section-title .line {
-				flex-grow: 1;
-				height: 1px;
-				background-color: var(--gray);
-				opacity: 0.3;
-			}
-
-			.section-title .number {
-				color: var(--primary);
-				font-family: "Fira Code", monospace;
-				margin-right: 10px;
-			}
-
-			.education-item,
-			.experience-item {
-				margin-bottom: 40px;
-				background-color: var(--dark);
-				padding: 30px;
-				border-radius: 5px;
-				transition: transform 0.3s;
-				border-left: 2px solid var(--primary);
-			}
-
-			.education-item:hover,
-			.experience-item:hover {
-				transform: translateY(-5px);
-			}
-
-			.item-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: flex-start;
-				margin-bottom: 15px;
-				gap: 15px;
-			}
-
-			.item-header > div {
-				display: flex;
-				flex-direction: column;
-				gap: 8px;
-				flex: 1;
-			}
-
-			.item-title {
-				font-weight: 600;
-				font-size: 1.3rem;
-				color: var(--light);
-				display: block;
-				line-height: 1.4;
-			}
-
-			.item-title i {
-				margin-right: 12px;
-				color: var(--primary);
-			}
-
-			.item-subtitle {
-				color: var(--primary);
-				font-size: 1rem;
-				display: flex;
-				align-items: center;
-				gap: 8px;
-			}
-
-			.item-date {
-				color: var(--primary);
-				font-size: 0.9rem;
-			}
-
-			.item-location {
-				color: var(--gray);
-				font-size: 0.9rem;
-				margin-bottom: 15px;
-				display: flex;
-				align-items: center;
-				gap: 5px;
-			}
-
-			.item-location i {
-				font-size: 0.8rem;
-			}
-
-			ul {
-				list-style-position: inside;
-			}
-
-			ul li {
-				margin-bottom: 10px;
-				color: var(--gray);
-			}
-
-			ul li::marker {
-				color: var(--primary);
-			}
-
-			.skill-list li i {
-				margin-right: 10px;
-				color: var(--primary);
-				width: 20px;
-				text-align: center;
-			}
-
-			.skills-container {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-				gap: 20px;
-				position: relative;
-				perspective: 1000px;
-			}
-
-			.skill-category {
-				background-color: var(--dark);
-				padding: 25px;
-				border-radius: 5px;
-				transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-				position: relative;
-				overflow: hidden;
-				transform-style: preserve-3d;
-				border: 2px solid var(--primary);
-				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-				opacity: 0;
-			}
-
-			.skill-category:nth-child(odd) {
-				transform: rotateX(5deg);
-			}
-
-			.skill-category:nth-child(even) {
-				transform: rotateX(-5deg);
-			}
-
-			.skill-category:nth-child(3n) {
-				animation: float 3s ease-in-out infinite;
-			}
-
-			.skill-category:nth-child(3n + 1) {
-				animation: float 3s ease-in-out infinite 1s;
-			}
-
-			.skill-category:nth-child(3n + 2) {
-				animation: float 3s ease-in-out infinite 2s;
-			}
-
-			@keyframes float {
-				0% {
-					transform: translateY(0) rotateX(5deg);
-				}
-				50% {
-					transform: translateY(-10px) rotateX(-5deg);
-				}
-				100% {
-					transform: translateY(0) rotateX(5deg);
-				}
-			}
-
-			.skill-category:hover {
-				transform: translateY(-8px) rotateX(0) scale(1.02);
-				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-				z-index: 1;
-			}
-
-			.skill-category::after {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(
-					135deg,
-					transparent 0%,
-					rgba(var(--secondary-rgb), 0.1) 50%,
-					transparent 100%
-				);
-				transform: translateX(-100%);
-				transition: transform 0.6s;
-			}
-
-			.skill-category:hover::after {
-				transform: translateX(100%);
-			}
-
-			.skill-category.visible {
-				animation: skillFadeIn 0.6s ease forwards;
-			}
-
-			.skill-list li {
-				opacity: 0.8;
-				transform: translateX(-10px);
-				transition: all 0.3s ease;
-			}
-
-			.skill-category:hover .skill-list li {
-				opacity: 1;
-				transform: translateX(0);
-			}
-
-			.skill-list li:nth-child(1) {
-				transition-delay: 0.1s;
-			}
-			.skill-list li:nth-child(2) {
-				transition-delay: 0.2s;
-			}
-			.skill-list li:nth-child(3) {
-				transition-delay: 0.3s;
-			}
-			.skill-list li:nth-child(4) {
-				transition-delay: 0.4s;
-			}
-			.skill-list li:nth-child(5) {
-				transition-delay: 0.5s;
-			}
-			.skill-list li:nth-child(6) {
-				transition-delay: 0.6s;
-			}
-
-			.projects-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-				gap: 25px;
-			}
-
-			.project-card {
-				background-color: var(--dark);
-				border-radius: 5px;
-				padding: 25px;
-				transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-				display: flex;
-				flex-direction: column;
-				height: 100%;
-				position: relative;
-				overflow: hidden;
-				border: 1px solid transparent;
-			}
-
-			.project-card:hover {
-				transform: translateY(-8px);
-				border-color: var(--primary);
-				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-			}
-
-			.project-card::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-				border-radius: 5px;
-				padding: 2px;
-				background: linear-gradient(
-					45deg,
-					transparent,
-					var(--primary),
-					transparent
-				);
-				-webkit-mask: linear-gradient(#fff 0 0) content-box,
-					linear-gradient(#fff 0 0);
-				mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-				-webkit-mask-composite: xor;
-				mask-composite: exclude;
-				opacity: 0;
-				transition: opacity 0.4s ease;
-			}
-
-			.project-card:hover::before {
-				opacity: 1;
-			}
-
-			.project-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 20px;
-			}
-
-			.project-folder {
-				color: var(--primary);
-				font-size: 2rem;
-			}
-
-			.project-links {
-				display: flex;
-				gap: 15px;
-			}
-
-			.project-links a {
-				color: var(--light);
-				font-size: 1.2rem;
-				transition: color 0.3s;
-			}
-
-			.project-links a:hover {
-				color: var(--primary);
-			}
-
-			.project-title {
-				color: var(--light);
-				margin-bottom: 15px;
-				font-size: 1.25rem;
-				font-weight: 600;
-			}
-
-			.project-description {
-				color: var(--gray);
-				margin-bottom: 20px;
-				flex-grow: 1;
-				line-height: 1.8;
-			}
-
-			.project-tech {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 10px;
-				margin-top: auto;
-			}
-
-			.tech-item {
-				color: var(--gray);
-				font-size: 0.8rem;
-				font-family: "Fira Code", monospace;
-			}
-
-			.code-block {
-				background-color: var(--code-bg);
-				border-radius: 5px;
-				padding: 20px;
-				margin: 30px 0;
-				overflow-x: auto;
-				font-family: "Fira Code", monospace;
-				font-size: 0.9rem;
-				line-height: 1.8;
-			}
-
-			.code-comment {
-				color: #5a6378;
-			}
-
-			.code-keyword {
-				color: #ff7b72;
-			}
-
-			.code-function {
-				color: #d2a8ff;
-			}
-
-			.code-string {
-				color: #a5d6ff;
-			}
-
-			.code-number {
-				color: #79c0ff;
-			}
-
-			footer {
-				text-align: center;
-				padding: 50px 0;
-				background-color: var(--dark);
-			}
-
-			footer p {
-				margin-bottom: 20px;
-				color: var(--gray);
-			}
-
-			.social-links {
-				display: flex;
-				justify-content: center;
-				gap: 20px;
-				margin-bottom: 30px;
-			}
-
-			.social-links a {
-				color: var(--light);
-				font-size: 1.5rem;
-				transition: color 0.3s, transform 0.3s;
-			}
-
-			.social-links a:hover {
-				color: var(--primary);
-				transform: translateY(-3px);
-			}
-
-			.copyright {
-				color: var(--gray);
-				font-size: 0.8rem;
-			}
-
-			.copyright a {
-				color: var(--primary);
-				text-decoration: none;
-			}
-
-			.timeline {
-				position: relative;
-				max-width: 800px;
-				margin: 0 auto;
-			}
-
-			.timeline::after {
-				content: "";
-				position: absolute;
-				width: 2px;
-				background: var(--primary);
-				top: 0;
-				bottom: 0;
-				left: 50%;
-				opacity: 0.3;
-			}
-
-			.education-item {
-				position: relative;
-				width: calc(50% - 30px);
-				margin-bottom: 60px;
-			}
-
-			.education-item:nth-child(odd) {
-				left: 0;
-			}
-
-			.education-item:nth-child(even) {
-				left: calc(50% + 30px);
-			}
-
-			.education-item::after {
-				content: "";
-				position: absolute;
-				width: 16px;
-				height: 16px;
-				background: var(--primary);
-				border-radius: 50%;
-				top: 25px;
-			}
-
-			.education-item:nth-child(odd)::after {
-				right: -38px;
-			}
-
-			.education-item:nth-child(even)::after {
-				left: -38px;
-			}
-
-			.timeline-date {
-				position: absolute;
-				top: -25px;
-				color: var(--primary);
-				font-size: 0.9rem;
-				font-family: "Fira Code", monospace;
-			}
-
-			.education-item:nth-child(odd) .timeline-date {
-				right: -120px;
-			}
-
-			.education-item:nth-child(even) .timeline-date {
-				left: -120px;
-			}
-
-			.university-logo {
-				width: 120px;
-				height: auto;
-				display: block;
-				margin: 0 auto;
-				margin-bottom: 30px;
-				padding: 10px;
-				filter: grayscale(100%) brightness(150%);
-				transition: all 0.3s ease;
-				max-height: 100px;
-				object-fit: contain;
-			}
-
-			.education-item:hover .university-logo {
-				filter: grayscale(0%);
-				transform: scale(1.05);
-			}
-
-			@media (max-width: 768px) {
-				.timeline::after {
-					left: 31px;
-				}
-
-				.education-item {
-					width: calc(100% - 80px);
-					left: 80px !important;
-				}
-
-				.education-item::after {
-					left: -38px !important;
-				}
-
-				.timeline-date {
-					left: -120px !important;
-				}
-
-				.header-content {
-					flex-direction: column;
-					gap: 15px;
-				}
-
-				nav ul {
-					flex-wrap: wrap;
-					justify-content: center;
-					gap: 20px;
-				}
-
-				.theme-toggle {
-					margin-left: 0;
-				}
-
-				.projects-grid {
-					grid-template-columns: 1fr;
-				}
-
-				.skill-category {
-					transform: none !important;
-					animation: none !important;
-				}
-
-				.hero-content h1 {
-					font-size: clamp(1.8rem, 4vw, 3.5rem);
-				}
-
-				.hero-content h2 {
-					font-size: clamp(1.2rem, 2.5vw, 2rem);
-				}
-			}
-
-			.contact-form {
-				max-width: 600px;
-				margin: 0 auto;
-			}
-
-			.form-group {
-				margin-bottom: 20px;
-			}
-
-			.form-group label {
-				display: block;
-				margin-bottom: 8px;
-				color: var(--light);
-				font-size: 0.9rem;
-			}
-
-			.form-group input,
-			.form-group textarea {
-				width: 100%;
-				padding: 12px;
-				background: var(--dark);
-				border: 2px solid transparent;
-				border-radius: 4px;
-				color: var(--light);
-				font-size: 0.9rem;
-				font-family: "Fira Code", monospace;
-				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-			}
-
-			.form-group input:hover,
-			.form-group textarea:hover {
-				background: var(--code-bg);
-			}
-
-			.form-group input:focus,
-			.form-group textarea:focus {
-				background: var(--code-bg);
-				border-color: var(--primary);
-				box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
-			}
-
-			.form-group textarea {
-				min-height: 150px;
-				resize: vertical;
-			}
-
-			.submit-btn {
-				width: 100%;
-				margin-top: 20px;
-			}
-
-			@keyframes skillFadeIn {
-				from {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-		</style>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles/theme.css" />
 	</head>
 	<body>
 		<header>
@@ -886,6 +52,27 @@
 							machine learning.
 						</p>
 						<a href="#projects" class="btn">View My Work</a>
+
+						<!-- new contact info -->
+						<div class="contact-details">
+							<div><i class="fas fa-map-marker-alt"></i> San Ramon, CA</div>
+							<div>
+								<i class="fas fa-envelope"></i>
+								<a href="mailto:anmol2512s@gmail.com">anmol2512s@gmail.com</a>
+							</div>
+							<div>
+								<i class="fab fa-linkedin"></i>
+								<a href="https://linkedin.com/in/anmolsharma-cs" target="_blank"
+									>linkedin.com/in/anmolsharma-cs</a
+								>
+							</div>
+							<div>
+								<i class="fab fa-github"></i>
+								<a href="https://github.com/Anmol-tech" target="_blank"
+									>github.com/Anmol-tech</a
+								>
+							</div>
+						</div>
 					</div>
 					<div class="profile-image-container">
 						<img
@@ -921,16 +108,22 @@
 									University</span
 								>
 								<span class="item-subtitle"
-									><i class="fas fa-award"></i> M.S. Computer Science</span
+									><i class="fas fa-award"></i> Master of Science in Computer
+									Science and Engineering</span
 								>
 							</div>
-							<span class="item-date">2025</span>
+							<span class="item-date">Expected Dec 2026</span>
 						</div>
 						<div class="item-location">
-							<i class="fas fa-map-marker-alt"></i> Santa Clara, California
+							<i class="fas fa-map-marker-alt"></i> Santa Clara, CA
 						</div>
 						<ul>
-							<li>Specializing in Cloud Computing and Machine Learning</li>
+							<li>GPA: 3.7/4.0</li>
+							<li>
+								Relevant Coursework: Machine Learning, Advanced Algorithms,
+								Advanced Operating Systems, Object-Oriented Analysis, Design,
+								and Programming
+							</li>
 						</ul>
 					</div>
 
@@ -947,22 +140,23 @@
 									><i class="fas fa-university"></i> GGSIPU</span
 								>
 								<span class="item-subtitle"
-									><i class="fas fa-award"></i> B.Tech Computer Science</span
+									><i class="fas fa-award"></i> Bachelor of Technology in
+									Computer Science and Engineering</span
 								>
 							</div>
-							<span class="item-date">2018 - 2022</span>
+							<span class="item-date">2018 – 2022</span>
 						</div>
 						<div class="item-location">
-							<i class="fas fa-map-marker-alt"></i> New Delhi, India
+							<i class="fas fa-map-marker-alt"></i> Delhi, India
 						</div>
 						<ul>
-							<li>Graduated with First Class Honors (GPA: 3.85/4.0)</li>
-							<li>Student Coordinator - BPIT ICFOSS (2021-2022),</li>
+							<li>GPA: 3.85/4.00 (90%)</li>
+							<li>Student Coordinator ‑ BPIT ICFOSS (2021-2022)</li>
 							<li>
-								Vice President - BPIT International Organization of Software
-								Developers (2020-2021)
+								Vice President ‑ BPIT International Org. of Software Developers
+								(2020-2021)
 							</li>
-							<li>1st Place - College Smart India Hackathon 2020</li>
+							<li>First Place Winner ‑ College Smart India Hackathon 2020</li>
 						</ul>
 					</div>
 				</div>
@@ -990,32 +184,22 @@
 					</div>
 					<ul>
 						<li>
-							Collaborated within a team to migrate a Django template-based
-							application to a Django REST API with a React frontend, enhancing
-							application performance and maintainability
+							Enhanced notification system by integrating WhatsApp, MS Teams,
+							and Slack support, resulting in 42% increase in user engagement
 						</li>
 						<li>
-							Enhanced the notification system by integrating support for
-							WhatsApp, MS Teams, and Slack, resulting in a 42% increase in user
-							engagement
+							Spearheaded development of a scalable online class management
+							system (Django, PostgreSQL), automating workflows and enabling
+							analytics, reducing manual overhead by 60%
 						</li>
 						<li>
-							Implemented React Hook Form across the application, developing a
-							generic schema generation function to streamline form creation and
-							management
-						</li>
-						<li>
-							Led end-to-end development of a scalable online class management
-							system using Django and PostgreSQL, incorporating automated class
-							tests and analytics dashboards
+							Collaborated with cross-functional teams to migrate Django
+							template-based application to Django REST API with React frontend,
+							improving performance and maintainability
 						</li>
 						<li>
 							Designed and developed a complete CRM microservice system using
 							FastAPI, enabling colleges to effectively track recruitment leads
-						</li>
-						<li>
-							Maintained specialized data systems and developed new features,
-							including temporary support user creation functionality
 						</li>
 					</ul>
 				</div>
@@ -1037,21 +221,13 @@
 							in Python, reducing response time by 50%
 						</li>
 						<li>
-							Developed a Cloud Run solution with Pub/Sub to migrate 10M+
-							documents from Firestore to BigQuery, ensuring efficient and
-							scalable data transfer
-						</li>
-						<li>
-							Implemented a new Django project with GraphQL, enhancing API
-							flexibility and performance
+							Engineered a serverless document migration system (Cloud Run,
+							Pub/Sub) that transferred over 10M documents from Firestore to
+							BigQuery, ensuring data integrity and 2× throughput
 						</li>
 						<li>
 							Enhanced security by implementing Multi-Factor Authentication
 							(MFA) and building a robust authentication system
-						</li>
-						<li>
-							Created a real-time chat system using GetStream and developed APIs
-							to support seamless communication
 						</li>
 					</ul>
 				</div>
@@ -1138,6 +314,89 @@
 							<span class="tech-item">Flask</span>
 						</div>
 					</div>
+
+					<!-- new project card -->
+					<div class="project-card">
+						<div class="project-header">
+							<div class="project-folder"><i class="fas fa-folder"></i></div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/Visual-Firewall-CNN"
+									target="_blank"
+									><i class="fab fa-github"></i
+								></a>
+							</div>
+						</div>
+						<h3 class="project-title">
+							Visual Firewall: Intrusion Detection via Deep Learning
+						</h3>
+						<div class="project-description">
+							Built a CNN-based system to detect cyberattacks by converting
+							network traffic into GAF images. Achieved 99.8% accuracy on the
+							CIC-IDS-2017 dataset using models like ResNet18, MobileNetV2 and
+							custom CNN.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">Python</span>
+							<span class="tech-item">TensorFlow</span>
+							<span class="tech-item">PyTorch</span>
+							<span class="tech-item">OpenCV</span>
+						</div>
+					</div>
+
+					<!-- New project: GetBestCandidate -->
+					<div class="project-card">
+						<div class="project-header">
+							<div class="project-folder"><i class="fas fa-folder"></i></div>
+							<div class="project-links">
+								<a
+									href="https://getbestcandidate-kbnfu2rik8kuznb4wyxws7.streamlit.app/"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fas fa-arrow-up-right-from-square"></i>
+								</a>
+								<a
+									href="https://github.com/Anmol-tech/GetBestCandidate"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-github"></i>
+								</a>
+							</div>
+						</div>
+						<h3 class="project-title">
+							GetBestCandidate: Candidate Recommendation Engine
+						</h3>
+						<div class="project-description">
+							Built a Streamlit web app that recommends top candidates for a
+							role by comparing a job description with uploaded resumes using
+							text embeddings and cosine similarity. Displays top 5–10
+							candidates with similarity scores and an optional AI summary for
+							fit.
+							<br />
+							<a
+								href="https://getbestcandidate-kbnfu2rik8kuznb4wyxws7.streamlit.app/"
+								target="_blank"
+								rel="noopener"
+								>Live app</a
+							>
+							•
+							<a
+								href="https://github.com/Anmol-tech/GetBestCandidate"
+								target="_blank"
+								rel="noopener"
+								>Code</a
+							>
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">Python</span>
+							<span class="tech-item">Streamlit</span>
+							<span class="tech-item">Embeddings</span>
+							<span class="tech-item">Cosine Similarity</span>
+							<span class="tech-item">NLP</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -1145,7 +404,7 @@
 		<section id="skills" class="section">
 			<div class="container">
 				<div class="section-title">
-					<span class="number">04.</span>
+					<span class="number">05.</span>
 					<h2>Skills</h2>
 					<div class="line"></div>
 				</div>
@@ -1154,35 +413,32 @@
 						<h3><i class="fas fa-code"></i> Languages</h3>
 						<ul class="skill-list">
 							<li><i class="fab fa-python"></i> Python</li>
-							<li><i class="fab fa-js"></i> JavaScript/TypeScript</li>
-							<li><i class="fab fa-java"></i> Java</li>
 							<li><i class="fas fa-plus-square"></i> C++</li>
-							<li><i class="fas fa-database"></i> SQL</li>
+							<li><i class="fab fa-java"></i> Java</li>
+							<li><i class="fab fa-js"></i> TypeScript</li>
 							<li><i class="fas fa-mobile-alt"></i> Dart</li>
 						</ul>
 					</div>
 
 					<div class="skill-category">
-						<h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+						<h3><i class="fas fa-laptop-code"></i> Frameworks</h3>
 						<ul class="skill-list">
+							<li><i class="fab fa-python"></i> Django</li>
+							<li><i class="fab fa-python"></i> Flask</li>
+							<li><i class="fas fa-bolt"></i> FastAPI</li>
 							<li><i class="fab fa-react"></i> React</li>
 							<li><i class="fab fa-react"></i> Next.js</li>
-							<li><i class="fab fa-angular"></i> Angular</li>
-							<li><i class="fab fa-html5"></i> HTML/CSS</li>
-							<li><i class="fab fa-css3"></i> Tailwind</li>
-							<li><i class="fab fa-google"></i> Flutter</li>
 						</ul>
 					</div>
 
 					<div class="skill-category">
-						<h3><i class="fas fa-server"></i> Backend</h3>
+						<h3><i class="fas fa-brain"></i> ML / Data</h3>
 						<ul class="skill-list">
-							<li><i class="fab fa-python"></i> Django</li>
-							<li><i class="fas fa-bolt"></i> FastAPI</li>
-							<li><i class="fab fa-python"></i> Flask</li>
-							<li><i class="fab fa-node-js"></i> Node.js</li>
-							<li><i class="fas fa-project-diagram"></i> GraphQL</li>
-							<li><i class="fas fa-exchange-alt"></i> REST APIs</li>
+							<li><i class="fab fa-python"></i> TensorFlow</li>
+							<li><i class="fas fa-microchip"></i> PyTorch</li>
+							<li><i class="fas fa-eye"></i> OpenCV</li>
+							<li><i class="fas fa-table"></i> Pandas</li>
+							<li><i class="fas fa-calculator"></i> NumPy</li>
 						</ul>
 					</div>
 
@@ -1208,17 +464,6 @@
 							<li><i class="fab fa-google"></i> BigQuery</li>
 						</ul>
 					</div>
-
-					<div class="skill-category">
-						<h3><i class="fas fa-brain"></i> ML/AI</h3>
-						<ul class="skill-list">
-							<li><i class="fas fa-microchip"></i> TensorFlow</li>
-							<li><i class="fas fa-eye"></i> OpenCV</li>
-							<li><i class="fas fa-table"></i> Pandas</li>
-							<li><i class="fas fa-calculator"></i> NumPy</li>
-							<li><i class="fas fa-comments"></i> NLP</li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -1226,7 +471,7 @@
 		<section id="contact" class="section">
 			<div class="container">
 				<div class="section-title">
-					<span class="number">05.</span>
+					<span class="number">07.</span>
 					<h2>Get In Touch</h2>
 					<div class="line"></div>
 				</div>
