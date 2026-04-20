@@ -753,6 +753,54 @@ ul li::before {
 /* ─────────────────────────────────────────────────────────────────────────────
    Projects Grid
    ───────────────────────────────────────────────────────────────────────────── */
+.projects-controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	align-items: center;
+	margin: 0.75rem 0 1.25rem;
+}
+
+.filter-chip {
+	appearance: none;
+	border: 1px solid var(--border-subtle);
+	background: rgba(12, 18, 34, 0.5);
+	color: var(--text-secondary);
+	font-size: 0.85rem;
+	font-weight: 550;
+	padding: 0.45rem 0.75rem;
+	border-radius: 999px;
+	cursor: pointer;
+	transition:
+		transform 0.15s ease,
+		color 0.15s ease,
+		border-color 0.15s ease,
+		background 0.15s ease,
+		box-shadow 0.15s ease;
+}
+
+:root[data-theme="light"] .filter-chip {
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.filter-chip:hover {
+	color: var(--text-primary);
+	border-color: var(--border-glow);
+	transform: translateY(-1px);
+	box-shadow: 0 0 0 3px var(--glow-primary);
+}
+
+.filter-chip.is-active {
+	color: var(--bg-base);
+	border-color: transparent;
+	background: var(--gradient-primary);
+	box-shadow: 0 10px 30px var(--glow-primary);
+}
+
+.is-hidden {
+	display: none !important;
+}
+
 .projects-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -808,6 +856,28 @@ ul li::before {
 	margin-bottom: 1.25rem;
 }
 
+.project-media {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid rgba(156, 163, 175, 0.12);
+	background: rgba(3, 7, 18, 0.35);
+	margin: -0.25rem 0 1rem;
+}
+
+:root[data-theme="light"] .project-media {
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.project-media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	filter: saturate(0.95) contrast(1.02);
+}
+
 .project-folder {
 	font-size: 2.5rem;
 	background: var(--gradient-text);
@@ -847,6 +917,46 @@ ul li::before {
 	margin-top: -0.5rem;
 	margin-bottom: 0.75rem;
 	opacity: 0.9;
+}
+
+.project-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: -0.15rem 0 0.9rem;
+}
+
+.badge {
+	font-family: "Fira Code", monospace;
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	padding: 0.25rem 0.6rem;
+	border-radius: 999px;
+	border: 1px solid var(--border-subtle);
+	background: rgba(12, 18, 34, 0.45);
+	color: var(--text-secondary);
+	white-space: nowrap;
+}
+
+:root[data-theme="light"] .badge {
+	background: rgba(255, 255, 255, 0.85);
+}
+
+.badge-subtle {
+	border-color: rgba(156, 163, 175, 0.14);
+}
+
+.badge-award {
+	color: var(--accent-light);
+	border-color: rgba(192, 38, 211, 0.35);
+	background: rgba(192, 38, 211, 0.12);
+}
+
+.badge-winner {
+	color: var(--highlight-light);
+	border-color: rgba(13, 148, 136, 0.35);
+	background: rgba(13, 148, 136, 0.12);
 }
 
 .project-description {

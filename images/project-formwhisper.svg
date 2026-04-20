@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#121a2d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="80" y="92" width="1120" height="536" rx="28" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+  <rect x="120" y="140" width="520" height="56" rx="14" fill="rgba(255,255,255,0.06)"/>
+  <rect x="120" y="220" width="1040" height="48" rx="14" fill="rgba(255,255,255,0.05)"/>
+  <rect x="120" y="286" width="980" height="48" rx="14" fill="rgba(255,255,255,0.05)"/>
+  <rect x="120" y="352" width="1040" height="48" rx="14" fill="rgba(255,255,255,0.05)"/>
+  <rect x="120" y="418" width="880" height="48" rx="14" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="1030" cy="520" r="66" fill="url(#accent)" opacity="0.95"/>
+  <path d="M1030 470c28 0 52 20 56 47 4 33-21 63-56 63s-60-30-56-63c4-27 28-47 56-47z" fill="rgba(3,7,18,0.55)"/>
+  <path d="M1010 532l16 16 32-40" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="120" y="592" fill="rgba(255,255,255,0.82)" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="34" font-weight="700">FormWhisper</text>
+  <text x="120" y="630" fill="rgba(255,255,255,0.60)" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="20">Voice-guided PDF form filling " Award winner</text>
+</svg>

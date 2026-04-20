@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#121a2d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <g opacity="0.18" stroke="rgba(255,255,255,0.55)" stroke-width="2">
+    <path d="M160 210h960M160 270h960M160 330h960M160 390h960M160 450h960M160 510h960"/>
+    <path d="M260 140v440M360 140v440M460 140v440M560 140v440M660 140v440M760 140v440M860 140v440M960 140v440M1060 140v440"/>
+  </g>
+  <rect x="140" y="120" width="1000" height="480" rx="28" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+  <g transform="translate(820 190)">
+    <path d="M140 0l140 60v150c0 92-65 175-140 210C65 385 0 302 0 210V60L140 0z" fill="url(#accent)" opacity="0.95"/>
+    <path d="M140 94l70 30v86c0 52-38 99-70 119-32-20-70-67-70-119v-86l70-30z" fill="rgba(3,7,18,0.55)"/>
+    <path d="M108 210l22 22 44-54" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="120" y="592" fill="rgba(255,255,255,0.82)" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="34" font-weight="700">Visual Firewall</text>
+  <text x="120" y="630" fill="rgba(255,255,255,0.60)" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="20">Intrusion detection via deep learning</text>
+</svg>

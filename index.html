@@ -31,6 +31,7 @@
 							<li><a href="#education">Education</a></li>
 							<li><a href="#experience">Experience</a></li>
 							<li><a href="#projects">Projects</a></li>
+							<li><a href="#achievements">Achievements</a></li>
 							<li><a href="#skills">Skills</a></li>
 							<li><a href="#contact">Contact</a></li>
 							<li>
@@ -125,10 +126,10 @@
 						</div>
 						<ul>
 							<li>
-								Relevant Coursework: Machine Learning, Deep Learning, Advanced
-								Algorithms, Advanced Operating Systems, Object-Oriented
-								Analysis, Design & Programming, Secure Coding in C and C++,
-								Distributed Systems
+								Relevant Coursework: Machine Learning, Deep Learning, Natural
+								Language Processing (NLP), Advanced Algorithms, Advanced
+								Operating Systems, Object-Oriented Analysis, Design Patterns,
+								Secure Coding in C and C++, Distributed Systems
 							</li>
 						</ul>
 					</div>
@@ -313,9 +314,22 @@
 					<h2>Projects</h2>
 					<div class="line"></div>
 				</div>
-				<div class="projects-grid">
+				<div class="projects-controls" aria-label="Project filters">
+					<button class="filter-chip is-active" type="button" data-filter="all">
+						All
+					</button>
+					<button class="filter-chip" type="button" data-filter="ai">AI</button>
+					<button class="filter-chip" type="button" data-filter="security">
+						Security
+					</button>
+					<button class="filter-chip" type="button" data-filter="fullstack">
+						Full Stack
+					</button>
+				</div>
+
+				<div class="projects-grid" id="projects-grid">
 					<!-- FormWhisper -->
-					<div class="project-card">
+					<div class="project-card" data-tags="ai fullstack">
 						<div class="project-header">
 							<div class="project-folder"><i class="fas fa-folder"></i></div>
 							<div class="project-links">
@@ -335,10 +349,20 @@
 								</a>
 							</div>
 						</div>
+						<div class="project-media">
+							<img
+								src="images/project-formwhisper.png"
+								alt="FormWhisper project preview"
+								loading="lazy"
+							/>
+						</div>
 						<h3 class="project-title">FormWhisper</h3>
-						<p class="project-award">
-							🏆 Future Unicorn Award — Hack For Humanity 2026
-						</p>
+						<div class="project-badges">
+							<span class="badge badge-award">Award</span>
+							<span class="badge badge-subtle"
+								>Future Unicorn — Hack For Humanity 2026</span
+							>
+						</div>
 						<div class="project-description">
 							Voice-guided form assistant that makes government paperwork
 							accessible to elderly and non-tech-savvy users. Upload any PDF,
@@ -359,7 +383,90 @@
 						</div>
 					</div>
 
-					<div class="project-card">
+					<!-- Sentient Arena 0 -->
+					<div class="project-card" data-tags="ai">
+						<div class="project-header">
+							<div class="project-folder"><i class="fas fa-folder"></i></div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/Arena0"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-github"></i>
+								</a>
+								<a
+									href="https://www.sentient.xyz/arena"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fas fa-arrow-up-right-from-square"></i>
+								</a>
+							</div>
+						</div>
+						<div class="project-media">
+							<img
+								src="images/project-arena0.png"
+								alt="Sentient Arena 0 project preview"
+								loading="lazy"
+							/>
+						</div>
+						<h3 class="project-title">Sentient Arena 0 — 1st Place (Winner)</h3>
+						<div class="project-badges">
+							<span class="badge badge-winner">Winner</span>
+							<span class="badge badge-subtle">Placed #1</span>
+						</div>
+						<div class="project-description">
+							Competition setup used for Sentient Arena 0: prompt template +
+							skills configuration with iterative evaluation to maximize score.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">Prompting</span>
+							<span class="tech-item">Jinja</span>
+							<span class="tech-item">Eval Harness</span>
+						</div>
+					</div>
+
+					<!-- RedForge -->
+					<div class="project-card" data-tags="ai security fullstack">
+						<div class="project-header">
+							<div class="project-folder"><i class="fas fa-folder"></i></div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/Redforge"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-github"></i>
+								</a>
+							</div>
+						</div>
+						<div class="project-media">
+							<img
+								src="images/project-redforge.png"
+								alt="RedForge project preview"
+								loading="lazy"
+							/>
+						</div>
+						<h3 class="project-title">RedForge</h3>
+						<div class="project-badges">
+							<span class="badge badge-subtle">A10 Hackathon project</span>
+							<span class="badge badge-subtle">LLM Red-Teaming</span>
+						</div>
+						<div class="project-description">
+							An autonomous red-team platform for LLM endpoints: generates and
+							runs controlled attacks, scores outcomes, streams results in
+							real-time, and produces actionable defense recommendations.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">FastAPI</span>
+							<span class="tech-item">React</span>
+							<span class="tech-item">SSE</span>
+							<span class="tech-item">Ollama</span>
+						</div>
+					</div>
+
+					<div class="project-card" data-tags="fullstack">
 						<div class="project-header">
 							<div class="project-folder">
 								<i class="fas fa-folder"></i>
@@ -369,6 +476,13 @@
 									><i class="fab fa-github"></i
 								></a>
 							</div>
+						</div>
+						<div class="project-media">
+							<img
+								src="images/project-qstream.gif"
+								alt="Q-Stream project preview"
+								loading="lazy"
+							/>
 						</div>
 						<h3 class="project-title">Q-Stream: Cross-Platform Media Player</h3>
 						<div class="project-description">
@@ -388,7 +502,7 @@
 					</div>
 
 					<!-- Visual Firewall -->
-					<div class="project-card">
+					<div class="project-card" data-tags="ai security">
 						<div class="project-header">
 							<div class="project-folder"><i class="fas fa-folder"></i></div>
 							<div class="project-links">
@@ -402,6 +516,13 @@
 						<h3 class="project-title">
 							Visual Firewall: Intrusion Detection via Deep Learning
 						</h3>
+						<div class="project-media">
+							<img
+								src="images/project-visual-firewall.svg"
+								alt="Visual Firewall project preview"
+								loading="lazy"
+							/>
+						</div>
 						<div class="project-description">
 							Built a CNN-based system to detect cyberattacks by converting
 							network traffic into GAF images. Achieved 99.8% accuracy on the
@@ -417,7 +538,7 @@
 					</div>
 
 					<!-- New project: GetBestCandidate -->
-					<div class="project-card">
+					<div class="project-card" data-tags="ai fullstack">
 						<div class="project-header">
 							<div class="project-folder"><i class="fas fa-folder"></i></div>
 							<div class="project-links">
@@ -436,6 +557,13 @@
 									<i class="fas fa-arrow-up-right-from-square"></i>
 								</a>
 							</div>
+						</div>
+						<div class="project-media">
+							<img
+								src="images/project-candidate-engine.svg"
+								alt="Candidate Recommendation Engine project preview"
+								loading="lazy"
+							/>
 						</div>
 						<h3 class="project-title">Candidate Recommendation Engine</h3>
 						<div class="project-description">
@@ -469,11 +597,18 @@
 					</div>
 
 					<!-- Amibo Chatbot -->
-					<div class="project-card">
+					<div class="project-card" data-tags="ai">
 						<div class="project-header">
 							<div class="project-folder">
 								<i class="fas fa-folder"></i>
 							</div>
+						</div>
+						<div class="project-media">
+							<img
+								src="images/project-amibo.svg"
+								alt="Amibo Chatbot project preview"
+								loading="lazy"
+							/>
 						</div>
 						<h3 class="project-title">Amibo Chatbot</h3>
 						<div class="project-description">
@@ -488,6 +623,87 @@
 							<span class="tech-item">Dialogflow</span>
 							<span class="tech-item">NLP</span>
 							<span class="tech-item">Flask</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="achievements" class="section">
+			<div class="container">
+				<div class="section-title">
+					<span class="number">04.</span>
+					<h2>Achievements</h2>
+					<div class="line"></div>
+				</div>
+
+				<div class="projects-grid achievements-grid">
+					<div class="project-card achievement-card">
+						<div class="project-header">
+							<div class="project-folder">
+								<i class="fas fa-trophy"></i>
+							</div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/Arena0"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-github"></i>
+								</a>
+								<a
+									href="https://www.sentient.xyz/arena"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fas fa-arrow-up-right-from-square"></i>
+								</a>
+							</div>
+						</div>
+						<h3 class="project-title">Sentient Arena 0 — 1st Place (Winner)</h3>
+						<div class="project-badges">
+							<span class="badge badge-winner">Winner</span>
+							<span class="badge badge-subtle">Team placement: #1</span>
+						</div>
+						<div class="project-description">
+							Placed 1st in Sentient Arena 0. Built and iterated a competition
+							setup (prompt template + skills) to maximize accuracy and score.
+						</div>
+					</div>
+
+					<div class="project-card achievement-card">
+						<div class="project-header">
+							<div class="project-folder">
+								<i class="fas fa-award"></i>
+							</div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/FormWhisper"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-github"></i>
+								</a>
+								<a
+									href="https://devpost.com/software/formwhisper"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fas fa-arrow-up-right-from-square"></i>
+								</a>
+							</div>
+						</div>
+						<h3 class="project-title">
+							FormWhisper — Future Unicorn Award (Hack For Humanity 2026)
+						</h3>
+						<div class="project-badges">
+							<span class="badge badge-award">Award</span>
+							<span class="badge badge-subtle">Future Unicorn Prize</span>
+						</div>
+						<div class="project-description">
+							Awarded the Future Unicorn Prize at Hack For Humanity 2026 for a
+							voice-guided assistant that helps users fill complex PDFs without
+							typing.
 						</div>
 					</div>
 				</div>
@@ -581,7 +797,7 @@
 		<section id="contact" class="section">
 			<div class="container">
 				<div class="section-title">
-					<span class="number">07.</span>
+					<span class="number">06.</span>
 					<h2>Get In Touch</h2>
 					<div class="line"></div>
 				</div>
@@ -721,6 +937,28 @@
 			document
 				.querySelectorAll(".skill-category")
 				.forEach((el) => observer.observe(el));
+
+			// Projects filtering
+			const filterChips = document.querySelectorAll(".filter-chip");
+			const projectCards = document.querySelectorAll(
+				"#projects-grid .project-card",
+			);
+
+			filterChips.forEach((chip) => {
+				chip.addEventListener("click", () => {
+					const filter = chip.getAttribute("data-filter");
+					filterChips.forEach((c) => c.classList.remove("is-active"));
+					chip.classList.add("is-active");
+
+					projectCards.forEach((card) => {
+						const tags = (card.getAttribute("data-tags") || "")
+							.split(" ")
+							.filter(Boolean);
+						const show = filter === "all" || tags.includes(filter);
+						card.classList.toggle("is-hidden", !show);
+					});
+				});
+			});
 		</script>
 	</body>
 </html>
