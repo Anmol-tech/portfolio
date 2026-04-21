@@ -22,10 +22,11 @@
 		<link rel="stylesheet" href="styles/theme.css" />
 	</head>
 	<body>
+		<div id="top"></div>
 		<header>
 			<div class="container">
 				<div class="header-content">
-					<a href="#" class="logo">anmol.sharma</a>
+					<a href="#top" class="logo">anmol.sharma</a>
 					<nav>
 						<ul>
 							<li><a href="#education">Education</a></li>
@@ -34,12 +35,10 @@
 							<li><a href="#achievements">Achievements</a></li>
 							<li><a href="#skills">Skills</a></li>
 							<li><a href="#contact">Contact</a></li>
-							<li>
-								<button class="theme-toggle" id="theme-toggle">
-									<i class="fas fa-moon"></i>
-								</button>
-							</li>
 						</ul>
+						<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+							<i class="fas fa-moon"></i>
+						</button>
 					</nav>
 				</div>
 			</div>
@@ -193,16 +192,25 @@
 					</div>
 					<ul>
 						<li>
-							Designing and building an AI-powered document evaluation
-							application and its underlying AI SDK from scratch, using the
-							LangChain framework to integrate multiple Large Language Models
-							(LLMs)
+							Architected and built an AI-powered document evaluation platform
+							and custom AI SDK from scratch, leveraging LangChain and OpenAI to
+							enable scalable RAG-based enterprise search
 						</li>
 						<li>
-							Implementing a scalable Natural Language Processing (NLP) and
-							LLM-based feedback system to provide personalized, actionable
-							insights, while collaborating with researchers to enhance accuracy
-							and usability
+							Developed an intelligent PDF analysis system including
+							PDF-to-Markdown conversion and rubric-based business document
+							evaluation, using LLMs to generate structured reports that reduced
+							manual review time by 90%
+						</li>
+						<li>
+							Designed and deployed end-to-end ML pipelines with FastAPI, AWS
+							S3, and AWS Lambda, ensuring scalable processing and seamless
+							integration with existing legacy systems
+						</li>
+						<li>
+							Built a financial insights extraction POC using Vision-Language
+							Models (VLMs) to analyze pitch decks and present key company
+							metrics in an investor-friendly format
 						</li>
 					</ul>
 				</div>
@@ -913,11 +921,31 @@
 			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 				anchor.addEventListener("click", function (e) {
 					e.preventDefault();
-					document.querySelector(this.getAttribute("href")).scrollIntoView({
-						behavior: "smooth",
-					});
+					const href = this.getAttribute("href");
+					if (!href || href === "#") {
+						window.scrollTo({ top: 0, behavior: "smooth" });
+						return;
+					}
+
+					if (href === "#top") {
+						window.scrollTo({ top: 0, behavior: "smooth" });
+						return;
+					}
+
+					const target = document.querySelector(href);
+					if (!target) return;
+					target.scrollIntoView({ behavior: "smooth" });
 				});
 			});
+
+			// Ensure logo always scrolls to top (reliable across browsers)
+			const logoLink = document.querySelector("a.logo");
+			if (logoLink) {
+				logoLink.addEventListener("click", (e) => {
+					e.preventDefault();
+					window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+				});
+			}
 
 			// Add intersection observer for skill categories
 			const observer = new IntersectionObserver(
