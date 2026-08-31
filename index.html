@@ -25,13 +25,14 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Syne:wght@500;600;700&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="styles/theme.css" />
 	</head>
 	<body>
 		<div id="top"></div>
+		<div class="scroll-signal" aria-hidden="true"></div>
 		<header>
 			<div class="container">
 				<div class="header-content">
@@ -57,7 +58,7 @@
 			</div>
 		</header>
 
-		<section class="hero">
+		<section class="hero" data-field="ORIGIN / BUILD SIGNAL">
 			<div class="container">
 				<div class="hero-container">
 					<div class="hero-content">
@@ -125,7 +126,7 @@
 			</div>
 		</section>
 
-		<section id="experience" class="section">
+		<section id="experience" class="section" data-field="FIELD 01 / EXPERIENCE">
 			<div class="container">
 				<div class="section-title">
 					<span class="number">01.</span>
@@ -310,7 +311,7 @@
 			</div>
 		</section>
 
-		<section id="projects" class="section">
+		<section id="projects" class="section" data-field="FIELD 02 / SELECTED WORK">
 			<div class="container">
 				<div class="section-title">
 					<span class="number">02.</span>
@@ -468,7 +469,6 @@
 							<img
 								src="images/project-formwhisper.png"
 								alt="FormWhisper project preview"
-								loading="lazy"
 							/>
 						</div>
 						<h3 class="project-title">FormWhisper</h3>
@@ -507,7 +507,6 @@
 							<img
 								src="images/project-redforge.png"
 								alt="RedForge project preview"
-								loading="lazy"
 							/>
 						</div>
 						<h3 class="project-title">RedForge</h3>
@@ -555,43 +554,10 @@
 						</div>
 					</article>
 				</div>
-				<div class="project-archive">
-					<h3>Additional Work</h3>
-					<div class="archive-links">
-						<a
-							href="https://github.com/Anmol-tech/Visual-Firewall-CNN"
-							target="_blank"
-							rel="noopener"
-							><strong>Visual Firewall</strong
-							><span>99.8% intrusion classification accuracy</span></a
-						>
-						<a
-							href="https://github.com/Q-Stream/Q-Stream"
-							target="_blank"
-							rel="noopener"
-							><strong>Q-Stream</strong
-							><span>Open-source cross-platform media player</span></a
-						>
-						<a
-							href="https://github.com/Anmol-tech/GetBestCandidate"
-							target="_blank"
-							rel="noopener"
-							><strong>Candidate Recommendation Engine</strong
-							><span>Semantic resume ranking and fit summaries</span></a
-						>
-						<a
-							href="https://github.com/Anmol-tech"
-							target="_blank"
-							rel="noopener"
-							><strong>Amibo</strong
-							><span>Intent-based college information assistant</span></a
-						>
-					</div>
-				</div>
 			</div>
 		</section>
 
-		<section id="achievements" class="section">
+		<section id="achievements" class="section" data-field="FIELD 03 / RECOGNITION">
 			<div class="container">
 				<div class="section-title">
 					<span class="number">03.</span>
@@ -672,7 +638,7 @@
 			</div>
 		</section>
 
-		<section id="education" class="section">
+		<section id="education" class="section" data-field="FIELD 04 / EDUCATION">
 			<div class="container">
 				<div class="section-title">
 					<span class="number">04.</span>
@@ -754,7 +720,7 @@
 			</div>
 		</section>
 
-		<section id="skills" class="section">
+		<section id="skills" class="section" data-field="FIELD 05 / TOOLKIT">
 			<div class="container">
 				<div class="section-title">
 					<span class="number">05.</span>
@@ -831,7 +797,7 @@
 			</div>
 		</section>
 
-		<section id="contact" class="section">
+		<section id="contact" class="section" data-field="FIELD 06 / CONTACT">
 			<div class="container">
 				<div class="section-title">
 					<span class="number">06.</span>
@@ -1016,6 +982,30 @@
 					});
 				});
 			});
+
+			// Signal-field interaction: a restrained local glow follows the pointer
+			// inside important cards without moving or tilting the content.
+			const signalSurfaces = document.querySelectorAll(
+				".experience-item, .project-card, .education-card, .achievement-card, .skill-category",
+			);
+			signalSurfaces.forEach((surface) => {
+				surface.addEventListener("pointermove", (event) => {
+					const bounds = surface.getBoundingClientRect();
+					surface.style.setProperty("--signal-x", `${event.clientX - bounds.left}px`);
+					surface.style.setProperty("--signal-y", `${event.clientY - bounds.top}px`);
+				});
+			});
+
+			const updateScrollSignal = () => {
+				const range = document.documentElement.scrollHeight - window.innerHeight;
+				const progress = range > 0 ? window.scrollY / range : 0;
+				document.documentElement.style.setProperty(
+					"--scroll-progress",
+					Math.min(1, Math.max(0, progress)),
+				);
+			};
+			updateScrollSignal();
+			window.addEventListener("scroll", updateScrollSignal, { passive: true });
 		</script>
 	</body>
 </html>
