@@ -37,8 +37,9 @@
 			<div class="container">
 				<div class="header-content">
 					<a href="#top" class="logo">anmol.sharma</a>
-					<nav>
-						<ul>
+					<nav aria-label="Main navigation">
+						<button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu <span aria-hidden="true">☰</span></button>
+						<ul id="primary-navigation">
 							<li><a href="#experience">Experience</a></li>
 							<li><a href="#projects">Projects</a></li>
 							<li><a href="#achievements">Achievements</a></li>
@@ -554,6 +555,39 @@
 						</div>
 					</article>
 				</div>
+				<div class="project-archive">
+					<h3>Additional Work</h3>
+					<div class="archive-links">
+						<a
+							href="https://github.com/Anmol-tech/Visual-Firewall-CNN"
+							target="_blank"
+							rel="noopener"
+							><strong>Visual Firewall</strong
+							><span>99.8% intrusion classification accuracy</span></a
+						>
+						<a
+							href="https://github.com/Q-Stream/Q-Stream"
+							target="_blank"
+							rel="noopener"
+							><strong>Q-Stream</strong
+							><span>Open-source cross-platform media player</span></a
+						>
+						<a
+							href="https://github.com/Anmol-tech/GetBestCandidate"
+							target="_blank"
+							rel="noopener"
+							><strong>Candidate Recommendation Engine</strong
+							><span>Semantic resume ranking and fit summaries</span></a
+						>
+						<a
+							href="https://github.com/Anmol-tech"
+							target="_blank"
+							rel="noopener"
+							><strong>Amibo</strong
+							><span>Intent-based college information assistant</span></a
+						>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -911,6 +945,36 @@
 					header.classList.remove("scrolled");
 				}
 			});
+
+			// Collapsible navigation keeps the fixed header compact on phones.
+			const menuToggle = document.querySelector(".menu-toggle");
+			const navigation = document.getElementById("primary-navigation");
+			const compactNavigation = window.matchMedia("(max-width: 1024px)");
+			function closeMenu() {
+				menuToggle.setAttribute("aria-expanded", "false");
+			}
+			menuToggle.addEventListener("click", () => {
+				menuToggle.setAttribute("aria-expanded", String(menuToggle.getAttribute("aria-expanded") !== "true"));
+			});
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+					closeMenu();
+					menuToggle.focus();
+				}
+			});
+			document.addEventListener("click", (event) => {
+				if (!event.target.closest("nav")) closeMenu();
+			});
+			document.querySelector("nav").addEventListener("focusout", (event) => {
+				if (!event.currentTarget.contains(event.relatedTarget)) closeMenu();
+			});
+			navigation.addEventListener("click", (event) => {
+				if (event.target.closest("a")) {
+					closeMenu();
+					if (compactNavigation.matches) menuToggle.focus({ preventScroll: true });
+				}
+			});
+			compactNavigation.addEventListener("change", closeMenu);
 
 			// Add smooth scroll for navigation links
 			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
