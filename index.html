@@ -8,12 +8,12 @@
 		</title>
 		<meta
 			name="description"
-			content="Software engineer with 3+ years of combined full-time and internship experience building performance-sensitive C++ systems, distributed backend services, full-stack products, and applied AI workflows."
+			content="Anmol Sharma is a software engineer with 3+ years of full-time and internship experience in C++ systems, backend services, full-stack products, and applied AI. M.S. Computer Science and Engineering, Santa Clara University, December 2026."
 		/>
 		<meta property="og:title" content="Anmol Sharma | Software Engineer" />
 		<meta
 			property="og:description"
-			content="Systems, full-stack, and applied AI engineer building reliable products end to end."
+			content="Software engineer working across C++ systems, Python backend services, React products, and applied AI."
 		/>
 		<meta property="og:type" content="website" />
 		<meta name="theme-color" content="#030712" />
@@ -72,18 +72,13 @@
 							Software Engineer · Systems · Full Stack · Applied AI
 						</p>
 						<h2>
-							I build reliable software from low-level data paths to AI-powered
-							products.
+							I build fast C++ systems, reliable backend services, and AI features that can be verified.
 						</h2>
 						<p>
-							I bring 3+ years of combined full-time and internship experience
-							across performance-sensitive C++, distributed backend services,
-							React products, and production AI workflows. I am currently
-							completing an M.S. in Computer Science and Engineering at Santa
-							Clara University.
+							I have 3+ years of full-time and internship experience. I've streamed raster data in C++ at Fiery, built AI search and document services at the Miller Center, and shipped Django and React products at Josh Technology Group. I finish my M.S. in Computer Science and Engineering at Santa Clara University in December 2026.
 						</p>
 						<div class="hero-actions">
-							<a href="#projects" class="btn">Explore Selected Work</a>
+							<a href="#projects" class="btn">See My Projects</a>
 							<a
 								href="https://github.com/Anmol-tech"
 								class="btn btn-secondary"
@@ -134,39 +129,58 @@
 					<h2>Experience</h2>
 					<div class="line"></div>
 				</div>
+				<p class="section-intro">
+					Full-time and internship roles in C++ systems, backend services, and applied AI.
+				</p>
+				<div class="experience-item">
+					<div class="item-header">
+						<div>
+							<span class="item-title">Miller Center for Global Impact</span
+							><span class="item-subtitle">Software Engineer Intern</span>
+						</div>
+						<span class="item-date">September 2026 – Present</span>
+					</div>
+					<div class="item-location">
+						<i class="fas fa-map-marker-alt"></i> Santa Clara, CA
+					</div>
+					<ul>
+						<li>
+							Deploy MCP access to an organization-scoped AI knowledge service through nginx and Cloudflare Tunnel, letting AI assistants search about 70K documents across 40+ organizations without opening internal ports.
+						</li>
+						<li>
+							Build configurable dashboards with XLSX and PDF export plus password-protected, expiring share links, so analysts can send curated views to outside stakeholders who don't have accounts.
+						</li>
+						<li>
+							Develop company-profile exports to CSV and Excel that link every figure to its source document, with an in-app preview for checking citations. A full profile generates in under 2 minutes.
+						</li>
+						<li>
+							Feed sector, stakeholder, and metric context into retrieval and keep versioned memories, so search returns current figures instead of outdated ones.
+						</li>
+					</ul>
+				</div>
 				<div class="experience-item">
 					<div class="item-header">
 						<div>
 							<span class="item-title">Fiery</span
 							><span class="item-subtitle">Software Engineering Intern</span>
 						</div>
-						<span class="item-date">June 2026 – Present</span>
+						<span class="item-date">June 2026 – September 2026</span>
 					</div>
 					<div class="item-location">
 						<i class="fas fa-map-marker-alt"></i> Fremont, CA
 					</div>
 					<ul>
 						<li>
-							Designed a C++ GLZ-to-runs pipeline that converts compressed
-							raster pages directly into RIP-ready structures, removing the
-							legacy ECT intermediate path.
+							Designed a C++ pipeline that converts compressed raster pages directly into run structures the RIP can consume, removing a legacy intermediate conversion step.
 						</li>
 						<li>
-							Re-architected decoding from full-page buffering and compositing
-							to row-streamed processing so downstream stages can consume output
-							incrementally.
+							Moved decoding from full-page buffering to row-by-row streaming, which kept decoder working memory under 1 MB and cut run-building time by about 68% on the primary photo benchmark.
 						</li>
 						<li>
-							Reverse-engineered the binary raster stream—including
-							Zstd-compressed blocks, run-length encoded pixel data, and indexed
-							colors—and built a standalone decoder to validate parsing and
-							reconstruction end to end.
+							Reverse-engineered the binary raster format (Zstd-compressed blocks, run-length encoded pixels, indexed colors) and built a standalone decoder to verify parsing and reconstruction.
 						</li>
 						<li>
-							Extended the implementation across multi-block and N-color jobs
-							while preserving regression output, resolving correctness and
-							API-compatibility issues, and integrating with shared build and CI
-							workflows.
+							Added multi-block and N-color support, validated on 59 files with zero mismatches across 109M+ pixels. Kept the shipped C++ ABI intact behind a compatible API and wired Visual Studio 2022 builds into CI gates.
 						</li>
 					</ul>
 				</div>
@@ -175,7 +189,7 @@
 						<div>
 							<span class="item-title">Miller Center for Global Impact</span
 							><span class="item-subtitle"
-								>Software Engineering Intern · Full Stack & Applied AI</span
+								>Software Engineer Intern</span
 							>
 						</div>
 						<span class="item-date">September 2025 – June 2026</span>
@@ -185,31 +199,27 @@
 					</div>
 					<ul>
 						<li>
-							Architected a multi-tenant AI backend with FastAPI,
-							PostgreSQL/pgvector, and Redis/ARQ, including organization-level
-							isolation, authentication, asynchronous document processing,
-							semantic retrieval, and reusable APIs.
+							Built a multi-tenant AI backend on FastAPI, PostgreSQL/pgvector, and Redis/ARQ with per-organization isolation, authentication, background document processing, and semantic search.
 						</li>
 						<li>
-							Authored reusable Python AI components for model-provider
-							integrations, document loading, vector stores, retrieval
-							workflows, and vision-language processing.
+							Wrote shared Python components for model providers, document loading, vector stores, retrieval, and vision-language processing.
 						</li>
 						<li>
-							Built an intelligent PDF evaluation workflow with PDF-to-Markdown
-							conversion and rubric-based LLM analysis, producing structured
-							reports that reduced manual document-review time by 90%.
+							Built a PDF review workflow that converts documents to Markdown and scores them against a rubric with an LLM, producing structured reports that cut manual review time by 90%.
 						</li>
 						<li>
-							Developed a financial-insights proof of concept that used
-							vision-language models to analyze pitch decks and present key
-							company metrics in an investor-friendly interface.
+							Prototyped pitch-deck analysis with vision-language models. Decks are processed in parallel chunks with per-chunk failure isolation, scored on a 10-category rubric, and summarized for investors.
 						</li>
 						<li>
-							Containerized and deployed services across AWS EC2/RDS, Lambda,
-							and S3, while delivering React/TypeScript dashboards and
-							customer-facing AI chat experiences.
+							Containerized and deployed services on AWS EC2, RDS, Lambda, and S3, and built React/TypeScript dashboards and customer-facing AI chat.
 						</li>
+						<li>
+							Designed a Python AI SDK with a common provider interface, exponential-backoff retries, and tagged releases that projects pin.
+						</li>
+						<li>
+							Moved impact-metric extraction to Next.js and added deterministic unit, period, and outlier checks on LLM output.
+						</li>
+
 					</ul>
 				</div>
 				<div class="experience-item">
@@ -225,29 +235,19 @@
 					</div>
 					<ul>
 						<li>
-							Modernized production applications from server-rendered Django
-							templates to Django REST Framework APIs and React frontends,
-							including a class-management platform and reusable full-stack
-							workflows.
+							Moved production apps from server-rendered Django templates to Django REST Framework APIs with React frontends. Led the team that built the class-management platform.
 						</li>
 						<li>
-							Designed a high-performance CRM microservice with FastAPI and
-							Elasticsearch for sub-second search while maintaining and
-							modernizing an AngularJS and Django codebase.
+							Designed a FastAPI and Elasticsearch CRM microservice with sub-second search, while maintaining and modernizing an AngularJS and Django codebase.
 						</li>
 						<li>
-							Built reusable dynamic forms and validation utilities with React
-							Hook Form, a custom data-query tool, user performance badges, and
-							foundational APIs for administrative dashboards.
+							Built reusable dynamic forms and validation with React Hook Form, an internal data-query tool, user performance badges, and the APIs behind admin dashboards.
 						</li>
 						<li>
-							Expanded configurable notifications across WhatsApp, Microsoft
-							Teams, and Slack, increasing user engagement by 42%.
+							Added configurable notifications for WhatsApp, Microsoft Teams, and Slack, raising user engagement by 42%.
 						</li>
 						<li>
-							Strengthened production security and infrastructure through Rapid7
-							remediation, cipher deprecation, client-onboarding subdomains, and
-							maintenance of a specialized .NET 3.5 data system.
+							Fixed Rapid7 security findings, retired weak ciphers, set up client-onboarding subdomains, and maintained a legacy .NET 3.5 data system.
 						</li>
 					</ul>
 				</div>
@@ -264,25 +264,16 @@
 					</div>
 					<ul>
 						<li>
-							Developed backend services with Python, Django REST Framework,
-							FastAPI, GraphQL, PostgreSQL, and Elasticsearch for data
-							extraction, analytics, bulk provisioning, onboarding, and
-							account-management workflows.
+							Built backend services in Python (Django REST Framework, FastAPI, GraphQL) on PostgreSQL and Elasticsearch for data extraction, analytics, bulk provisioning, onboarding, and account management.
 						</li>
 						<li>
-							Built authentication and permission workflows including MFA, and
-							integrated GetStream APIs to support live chat in a
-							PostgreSQL-backed service.
+							Built authentication and permissions, including MFA, and integrated GetStream for live chat in a PostgreSQL-backed service.
 						</li>
 						<li>
-							Engineered a distributed GCP Pub/Sub pipeline that migrated
-							approximately 10 million Firestore documents into BigQuery.
+							Built a distributed GCP Pub/Sub pipeline that moved about 10 million Firestore documents into BigQuery.
 						</li>
 						<li>
-							Improved a PDF-generation microservice's response time by 50%
-							through root-cause analysis, bottleneck identification, and
-							parallel processing; also diagnosed production issues, reviewed
-							pull requests, and mentored junior engineers.
+							Halved a PDF-generation microservice's response time by finding the bottleneck and parallelizing the work. Also debugged production issues, reviewed pull requests, and mentored junior engineers.
 						</li>
 					</ul>
 				</div>
@@ -299,13 +290,10 @@
 					</div>
 					<ul>
 						<li>
-							Designed and developed a cross-platform portfolio and
-							course-purchase application for Android and iOS using Flutter,
-							Dart, and Firebase.
+							Built a cross-platform portfolio and course-purchase app for Android and iOS with Flutter, Dart, and Firebase.
 						</li>
 						<li>
-							Resolved mobile UI and release challenges and published the
-							application to the Google Play Store.
+							Fixed mobile UI and release issues and published the app on the Google Play Store.
 						</li>
 					</ul>
 				</div>
@@ -320,8 +308,7 @@
 					<div class="line"></div>
 				</div>
 				<p class="section-intro">
-					Recent work spanning developer tools, distributed product systems,
-					document intelligence, and LLM evaluation.
+					Recent projects in agent tooling, document AI, and LLM evaluation.
 				</p>
 				<div class="projects-controls" aria-label="Project filters">
 					<button class="filter-chip is-active" type="button" data-filter="all">
@@ -334,7 +321,7 @@
 						Full Stack
 					</button>
 				</div>
-				<div class="projects-grid" id="projects-grid">
+				<div class="projects-grid" id="projects-grid" data-filter="all">
 					<article
 						class="project-card featured-project"
 						data-tags="ai fullstack"
@@ -363,11 +350,7 @@
 						</div>
 						<h3 class="project-title">StackMap</h3>
 						<div class="project-description">
-							AI onboarding workspace that turns a public GitHub repository into
-							an architecture graph, source-backed onboarding missions, mentor
-							chat, and familiarity tracking. Orchestrates seven specialist
-							Gemini agents in parallel and maintains managed-agent sessions in
-							remote sandboxes.
+							Converts a public GitHub repository into an architecture graph, source-linked onboarding missions, a mentor chat, and progress tracking. Seven specialist Gemini agents run in parallel, with managed-agent sessions in remote sandboxes.
 						</div>
 						<div class="project-tech">
 							<span class="tech-item">TypeScript</span
@@ -403,10 +386,7 @@
 						</div>
 						<h3 class="project-title">NextOffer</h3>
 						<div class="project-description">
-							Job application platform that monitors career pages, filters new
-							roles, tailors resumes, exports LaTeX/PDF, and tracks
-							applications. Built with a Java 21/Spring Boot API,
-							PostgreSQL/JPA, JWT authentication, React, and TypeScript.
+							Job search platform that monitors career pages, filters new roles, tailors resumes, exports LaTeX/PDF, and tracks applications. Built with a Java 21/Spring Boot API, PostgreSQL/JPA, JWT authentication, and a React/TypeScript frontend.
 						</div>
 						<div class="project-tech">
 							<span class="tech-item">Java 21</span
@@ -436,10 +416,7 @@
 							<span class="badge badge-subtle">Open-source extension</span>
 						</div>
 						<div class="project-description">
-							Co-developed virtual memory for a Mistral coding agent that pages
-							large tool output into SQLite/FTS5 and restores exact context on
-							demand. Contributed page-ID recall, prompt routing, and regression
-							coverage.
+							Co-developed virtual memory for a Mistral coding agent. Large tool output is paged into SQLite/FTS5 and restored on demand. Contributed page-ID recall, prompt routing, and regression tests.
 						</div>
 						<div class="project-tech">
 							<span class="tech-item">Python</span
@@ -478,11 +455,7 @@
 							><span class="badge badge-subtle">Hack for Humanity 2026</span>
 						</div>
 						<div class="project-description">
-							Voice-guided React/FastAPI assistant that interprets PDF forms,
-							collects answers conversationally, validates responses, and
-							generates completed documents. Uses a vision-language pipeline for
-							field understanding with speech transcription and natural voice
-							delivery.
+							Voice-guided assistant for completing PDF forms. A vision-language model detects the fields, the assistant asks each question aloud, validates the answers, and writes them into the original PDF. Built with React and FastAPI.
 						</div>
 						<div class="project-tech">
 							<span class="tech-item">React</span
@@ -512,10 +485,7 @@
 						</div>
 						<h3 class="project-title">RedForge</h3>
 						<div class="project-description">
-							FastAPI/React evaluation platform that coordinates controlled
-							endpoint tests, streams progress through Server-Sent Events,
-							scores outputs, and produces structured failure analysis and
-							defense recommendations.
+							Evaluation platform that runs controlled attack tests against an LLM endpoint, streams progress over Server-Sent Events, scores each response, and reports failures with defense recommendations. Built with FastAPI and React.
 						</div>
 						<div class="project-tech">
 							<span class="tech-item">FastAPI</span
@@ -542,16 +512,145 @@
 						</div>
 						<h3 class="project-title">NVIDIA Document Guidance</h3>
 						<div class="project-description">
-							Document-understanding workflow for nonprofits that parses PDFs,
-							falls back to OCR for scanned pages, retrieves relevant evidence,
-							and uses NVIDIA Nemotron on NIM to return structured deadlines,
-							financial data, requirements, and next steps.
+							Document-understanding workflow for nonprofits. Parses PDFs, falls back to OCR for scanned pages, retrieves relevant passages, and uses NVIDIA Nemotron on NIM to extract deadlines, financial figures, requirements, and next steps.
 						</div>
 						<div class="project-tech">
 							<span class="tech-item">NVIDIA NIM</span
 							><span class="tech-item">OCR</span
 							><span class="tech-item">FastAPI</span
 							><span class="tech-item">React</span>
+						</div>
+					</article>
+					<article class="project-card" data-tags="ai systems">
+						<div class="project-header">
+							<div class="project-kicker">Agent security</div>
+						</div>
+						<div class="project-media project-visual project-visual--vibevm">
+							<span>CounterForge</span><small>attack · inspect · defend</small>
+						</div>
+						<h3 class="project-title">CounterForge</h3>
+						<div class="project-description">
+							Agent-defense lab that replays prompt-injection attacks in a LangGraph loop (generate, execute, inspect, propose, replay). Includes versioned tool policies with approval-gated activation, rollback, and Twilio breach alerts.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">Python</span
+							><span class="tech-item">FastAPI</span
+							><span class="tech-item">LangGraph</span
+							><span class="tech-item">React</span
+							><span class="tech-item">SQLite</span>
+						</div>
+					</article>
+					<article class="project-card" data-tags="ai">
+						<div class="project-header">
+							<div class="project-kicker">Autonomous agents</div>
+							<div class="project-links">
+								<a
+									href="https://github.com/thesid42/Riff"
+									target="_blank"
+									rel="noopener"
+									aria-label="Riff source"
+									><i class="fab fa-github"></i
+								></a>
+							</div>
+						</div>
+						<div class="project-media project-visual project-visual--nvidia">
+							<span>Riff</span><small>generate · test · iterate</small>
+						</div>
+						<h3 class="project-title">Riff</h3>
+						<div class="project-badges">
+							<span class="badge badge-award">Best Use of Black Forest Labs</span>
+						</div>
+						<div class="project-description">
+							Co-developed an autonomous ad-testing loop. Liquid AI writes headlines, Black Forest Labs generates images, and simulated persona agents click or skip. Each round is planned until a target click rate is reached.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">Agents</span
+							><span class="tech-item">Liquid AI</span
+							><span class="tech-item">Black Forest Labs</span>
+						</div>
+					</article>
+					<article class="project-card" data-tags="ai systems">
+						<div class="project-header">
+							<div class="project-kicker">Browser automation</div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/ActionReplay"
+									target="_blank"
+									rel="noopener"
+									aria-label="ActionReplay source"
+									><i class="fab fa-github"></i
+								></a>
+							</div>
+						</div>
+						<div class="project-media project-visual project-visual--stackmap">
+							<span>ActionReplay</span><small>discover · save · replay</small>
+						</div>
+						<h3 class="project-title">ActionReplay</h3>
+						<div class="project-description">
+							An LLM discovers a browser workflow once and saves it as a typed capability. Later runs replay it without a model. If automation cannot continue safely, an operator takes over the same Chromium session, and irreversible confirmations remain manual.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">Python</span
+							><span class="tech-item">FastAPI</span
+							><span class="tech-item">Playwright</span
+							><span class="tech-item">Pydantic</span
+							><span class="tech-item">OpenRouter</span>
+						</div>
+					</article>
+					<article class="project-card" data-tags="ai fullstack">
+						<div class="project-header">
+							<div class="project-kicker">Profile generation</div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/VibeDate"
+									target="_blank"
+									rel="noopener"
+									aria-label="VibeDate source"
+									><i class="fab fa-github"></i
+								></a>
+							</div>
+						</div>
+						<div class="project-media project-visual project-visual--nextoffer">
+							<span>VibeDate</span><small>answer · infer · connect</small>
+						</div>
+						<h3 class="project-title">VibeDate</h3>
+						<div class="project-description">
+							Onboarding flow for a dating platform. Users answer ten situational questions and receive a saved profile. An OpenRouter LLM generates the profile, with a deterministic trait-scoring fallback if the output fails validation.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">Next.js</span
+							><span class="tech-item">TypeScript</span
+							><span class="tech-item">Prisma</span
+							><span class="tech-item">SQLite</span
+							><span class="tech-item">OpenRouter</span>
+						</div>
+					</article>
+					<article class="project-card" data-tags="ai fullstack">
+						<div class="project-header">
+							<div class="project-kicker">Multi-agent pipeline</div>
+							<div class="project-links">
+								<a
+									href="https://github.com/Anmol-tech/RoseWood-Letter"
+									target="_blank"
+									rel="noopener"
+									aria-label="The Rosewood Letter source"
+									><i class="fab fa-github"></i
+								></a>
+							</div>
+						</div>
+						<div class="project-media project-visual project-visual--nextoffer">
+							<span>Rosewood</span><small>curate · compose · deliver</small>
+						</div>
+						<h3 class="project-title">The Rosewood Letter</h3>
+						<div class="project-description">
+							Co-developed a hackathon prototype in which agents produce one personalized morning letter per hotel guest overnight. Includes a FastAPI backend with model-backed agents and ElevenLabs voice, and a React dashboard for previewing letters.
+						</div>
+						<div class="project-tech">
+							<span class="tech-item">FastAPI</span
+							><span class="tech-item">React</span
+							><span class="tech-item">Vite</span
+							><span class="tech-item">Agents</span
+							><span class="tech-item">ElevenLabs</span>
 						</div>
 					</article>
 				</div>
@@ -563,7 +662,7 @@
 							target="_blank"
 							rel="noopener"
 							><strong>Visual Firewall</strong
-							><span>99.8% intrusion classification accuracy</span></a
+							><span>CNN that classifies network intrusions with 99.8% accuracy</span></a
 						>
 						<a
 							href="https://github.com/Q-Stream/Q-Stream"
@@ -577,7 +676,7 @@
 							target="_blank"
 							rel="noopener"
 							><strong>Candidate Recommendation Engine</strong
-							><span>Semantic resume ranking and fit summaries</span></a
+							><span>Ranks resumes against a job semantically and summarizes fit</span></a
 						>
 						<a
 							href="https://github.com/Anmol-tech"
@@ -585,6 +684,20 @@
 							rel="noopener"
 							><strong>Amibo</strong
 							><span>Intent-based college information assistant</span></a
+						>
+						<a
+							href="https://github.com/Anmol-tech/acmhack-backend"
+							target="_blank"
+							rel="noopener"
+							><strong>Acoustic Shield</strong
+							><span>SageMaker pipeline that turns crash hotspots and weather into audio training data</span></a
+						>
+						<a
+							href="https://github.com/Anmol-tech/GardenSimulator"
+							target="_blank"
+							rel="noopener"
+							><strong>Garden Simulator</strong
+							><span>JavaFX garden simulation with weather events and automation</span></a
 						>
 					</div>
 				</div>
@@ -622,14 +735,13 @@
 								</a>
 							</div>
 						</div>
-						<h3 class="project-title">Sentient Arena 0 — 1st Place (Winner)</h3>
+						<h3 class="project-title">1st of 124 Teams, Sentient Arena 0</h3>
 						<div class="project-badges">
 							<span class="badge badge-winner">Winner</span>
-							<span class="badge badge-subtle">Team placement: #1</span>
+							<span class="badge badge-subtle">Ranked #1 of 124 teams</span>
 						</div>
 						<div class="project-description">
-							Placed 1st in Sentient Arena 0. Built and iterated a competition
-							setup (prompt template + skills) to maximize accuracy and score.
+							Placed first out of 124 teams in April 2026 with 78.86% accuracy. Developed and iterated the agent's prompt template and skills to maximize accuracy and score.
 						</div>
 					</div>
 
@@ -656,16 +768,55 @@
 							</div>
 						</div>
 						<h3 class="project-title">
-							FormWhisper — Future Unicorn Award (Hack For Humanity 2026)
+							Future Unicorn Award, Hack for Humanity 2026
 						</h3>
 						<div class="project-badges">
 							<span class="badge badge-award">Award</span>
 							<span class="badge badge-subtle">Future Unicorn Prize</span>
 						</div>
 						<div class="project-description">
-							Awarded the Future Unicorn Prize at Hack For Humanity 2026 for a
-							voice-guided assistant that helps users fill complex PDFs without
-							typing.
+							Awarded for FormWhisper, a voice-guided assistant that completes complex PDF forms without typing.
+						</div>
+					</div>
+
+					<div class="project-card achievement-card">
+						<div class="project-header">
+							<div class="project-folder">
+								<i class="fas fa-medal"></i>
+							</div>
+						</div>
+						<h3 class="project-title">2nd Place, AI Assistants Track</h3>
+						<div class="project-badges">
+							<span class="badge badge-award">Award</span>
+							<span class="badge badge-subtle">September 2026</span>
+						</div>
+						<div class="project-description">
+							Placed second in the AI Assistants Track at The Executable World hackathon in September 2026.
+						</div>
+					</div>
+
+					<div class="project-card achievement-card">
+						<div class="project-header">
+							<div class="project-folder">
+								<i class="fas fa-award"></i>
+							</div>
+							<div class="project-links">
+								<a
+									href="https://github.com/thesid42/Riff"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-github"></i>
+								</a>
+							</div>
+						</div>
+						<h3 class="project-title">Best Use of Black Forest Labs</h3>
+						<div class="project-badges">
+							<span class="badge badge-award">Award</span>
+							<span class="badge badge-subtle">Long Horizon Agents Hackathon</span>
+						</div>
+						<div class="project-description">
+							Awarded at the Long Horizon Agents Hackathon in September 2026 for Riff, an autonomous ad-testing loop.
 						</div>
 					</div>
 				</div>
@@ -680,8 +831,7 @@
 					<div class="line"></div>
 				</div>
 				<p class="section-intro">
-					Graduate study in systems and applied machine learning, supported by
-					a strong undergraduate foundation in computer science engineering.
+					Graduate study in systems and machine learning, following an undergraduate degree in computer science.
 				</p>
 				<div class="education-grid">
 					<article class="education-card">
@@ -693,7 +843,7 @@
 									class="university-logo"
 								/>
 							</div>
-							<span class="education-year">Expected 2026</span>
+							<span class="education-year">December 2026</span>
 						</div>
 						<p class="education-level">Graduate</p>
 						<h3>Santa Clara University</h3>
@@ -758,7 +908,7 @@
 			<div class="container">
 				<div class="section-title">
 					<span class="number">05.</span>
-					<h2>Technical Toolkit</h2>
+					<h2>Skills &amp; Tools</h2>
 					<div class="line"></div>
 				</div>
 				<div class="skills-container">
@@ -783,6 +933,9 @@
 							<li>Redis</li>
 							<li>GraphQL</li>
 							<li>Elasticsearch</li>
+							<li>SQLite</li>
+							<li>pgvector</li>
+							<li>ARQ</li>
 						</ul>
 					</div>
 					<div class="skill-category">
@@ -804,6 +957,9 @@
 							<li>Agent Orchestration</li>
 							<li>OCR</li>
 							<li>Hugging Face</li>
+							<li>LangGraph</li>
+							<li>LangChain</li>
+							<li>MCP</li>
 						</ul>
 					</div>
 					<div class="skill-category">
@@ -815,6 +971,9 @@
 							<li>CI/CD</li>
 							<li>Linux</li>
 							<li>Git</li>
+							<li>nginx</li>
+							<li>Cloudflare Tunnel</li>
+							<li>GitLab CI</li>
 						</ul>
 					</div>
 					<div class="skill-category">
@@ -835,13 +994,11 @@
 			<div class="container">
 				<div class="section-title">
 					<span class="number">06.</span>
-					<h2>Get In Touch</h2>
+					<h2>Get in Touch</h2>
 					<div class="line"></div>
 				</div>
 				<p style="text-align: center; max-width: 600px; margin: 0 auto 40px">
-					I am exploring software engineering opportunities where systems
-					thinking, product ownership, and applied AI come together. If that
-					matches what your team is building, I would be glad to connect.
+					I am seeking full-time software engineering roles starting January 2027 in systems, backend, or applied AI. Please contact me by email or through the form below.
 				</p>
 				<form
 					class="contact-form"
@@ -1034,6 +1191,7 @@
 			filterChips.forEach((chip) => {
 				chip.addEventListener("click", () => {
 					const filter = chip.getAttribute("data-filter");
+					document.getElementById("projects-grid").dataset.filter = filter;
 					filterChips.forEach((c) => c.classList.remove("is-active"));
 					chip.classList.add("is-active");
 

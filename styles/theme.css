@@ -2181,6 +2181,56 @@ footer {
 	}
 }
 
+/* Content additions reuse the existing theme; these rules only align layout. */
+#projects-grid .project-card {
+	min-width: 0;
+}
+
+#projects-grid .project-header {
+	min-height: 2.125rem;
+}
+
+#projects-grid .project-media {
+	flex-shrink: 0;
+}
+
+#projects-grid .project-visual span,
+#projects-grid .project-visual small {
+	max-width: 100%;
+	overflow-wrap: anywhere;
+}
+
+.badge {
+	max-width: 100%;
+	white-space: normal;
+}
+
+.section {
+	scroll-margin-top: 110px;
+}
+
+@media (min-width: 1025px) {
+	.achievements-grid .achievement-card:nth-child(2n + 3) {
+		grid-column: span 7;
+	}
+
+	.achievements-grid .achievement-card:nth-child(2n + 4) {
+		grid-column: span 5;
+	}
+
+	#projects-grid:not([data-filter="all"]) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+#projects-grid:not([data-filter="all"]) .project-card {
+	grid-column: span 1;
+}
+
+#projects-grid:not([data-filter="all"]) .project-media {
+	aspect-ratio: 16 / 9;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.scroll-signal,
 	.profile-image-container::before,
