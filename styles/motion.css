@@ -1,0 +1,152 @@
+/* Optional motion layer. Uses the existing theme tokens and layout. */
+.project-visual { position: relative; }
+.project-visual > span,
+.project-visual > small { position: relative; z-index: 2; }
+.signal-art {
+  position: absolute;
+  width: 115%;
+  height: 86%;
+  right: -6%;
+  top: -4%;
+  color: #fff;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.signal-track { stroke: currentColor; stroke-width: 0.8; opacity: 0.45; }
+.signal-packet { stroke: currentColor; stroke-width: 1.8; stroke-dasharray: 18 280; }
+.signal-node { stroke: currentColor; stroke-width: 1.2; fill: transparent; }
+.project-visual::after { transition: transform 900ms ease; }
+.project-card:focus-within { border-color: var(--primary); }
+
+:root[data-motion="on"][data-pointer="fine"] .project-card.is-tilting {
+  transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-5px);
+  transition: transform 180ms ease-out, border-color 220ms ease, box-shadow 220ms ease;
+}
+:root[data-motion="on"][data-pointer="fine"] .project-card:hover .project-visual::after { transform: translate(-10px, 8px) scale(1.12); }
+:root[data-motion="on"][data-pointer="fine"] .project-card .project-media img { transition: transform 650ms cubic-bezier(0.2,0.65,0.3,1); }
+:root[data-motion="on"][data-pointer="fine"] .project-card:hover .project-media img { transform: scale(1.045); }
+
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  :root[data-motion="on"] .signal-packet {
+    animation: signal-flow 7s linear infinite;
+    animation-delay: var(--signal-phase, 0s);
+    animation-play-state: paused;
+  }
+  :root[data-motion="on"] .signal-node {
+    animation: signal-node 4s ease-in-out infinite;
+    animation-delay: var(--node-delay, 0s);
+    animation-play-state: paused;
+  }
+  :root[data-motion="on"] .is-in-view .signal-packet,
+  :root[data-motion="on"] .is-in-view .signal-node { animation-play-state: running; }
+
+}
+
+@keyframes signal-flow { to { stroke-dashoffset: -596; } }
+@keyframes signal-node { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; fill: currentColor; } }
+
+:root[data-page-state="hidden"] *,
+:root[data-page-state="hidden"] *::before,
+:root[data-page-state="hidden"] *::after { animation-play-state: paused !important; }
+
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after,
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+:root[data-motion="off"],
+:root[data-motion="reduced"] { scroll-behavior: auto !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  html { scroll-behavior: auto !important; }
+}
+
+/* Hero: an orbital marker follows the existing portrait treatment. */
+.hero-orbit {
+  position: absolute;
+  inset: -22px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-orbit::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 3px);
+  left: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 16px var(--glow-primary);
+}
+.hero-orbit::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px dashed var(--border-subtle);
+  border-radius: 50%;
+  opacity: 0.55;
+}
+
+/* Small interactions make controls and tags respond without moving the layout. */
+:root[data-motion="on"] .skill-list li,
+:root[data-motion="on"] .tech-item {
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+@media (hover: hover) {
+  :root[data-motion="on"] .skill-list li:hover,
+  :root[data-motion="on"] .tech-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+  }
+  :root[data-motion="on"] .achievement-card:hover .project-folder i {
+    animation: award-nod 650ms cubic-bezier(0.2,0.65,0.3,1);
+  }
+  :root[data-motion="on"] .archive-links a:hover { transform: translateY(-3px); }
+}
+:root[data-motion="on"] .btn:active,
+:root[data-motion="on"] .filter-chip:active { transform: scale(0.97); }
+:root[data-motion="on"] .contact-form input,
+:root[data-motion="on"] .contact-form textarea { transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease; }
+:root[data-motion="on"] .contact-form input:focus,
+:root[data-motion="on"] .contact-form textarea:focus { transform: translateY(-2px); }
+
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  :root[data-motion="on"] .hero-orbit {
+    animation: portrait-orbit 28s linear infinite;
+    animation-play-state: paused;
+  }
+  :root[data-motion="on"] .hero.is-in-view .hero-orbit { animation-play-state: running; }
+  :root[data-motion="on"] .section-title.is-in-view .line {
+    animation: heading-signal 9s linear infinite;
+  }
+  :root[data-motion="on"] .experience-item.is-in-view::before {
+    background: linear-gradient(180deg, var(--border-glow) 30%, var(--primary) 50%, var(--border-glow) 70%);
+    background-size: 100% 300%;
+    animation: timeline-signal 7s ease-in-out infinite;
+  }
+  :root[data-motion="on"] .project-card.is-in-view .project-visual::before {
+    animation: preview-drift 12s ease-in-out infinite alternate;
+  }
+}
+@media (max-width: 768px) {
+  .hero-orbit { inset: -10px; }
+  .hero-orbit::after { inset: -6px; }
+}
+
+@keyframes portrait-orbit { to { transform: rotate(360deg); } }
+@keyframes heading-signal { to { background-position-x: 88px; } }
+@keyframes timeline-signal { 0%,100% { background-position-y: 0%; } 50% { background-position-y: 100%; } }
+@keyframes preview-drift { to { transform: translate(-24px, 12px); } }
+@keyframes award-nod { 35% { transform: rotate(-10deg) scale(1.08); } 70% { transform: rotate(6deg); } 100% { transform: none; } }

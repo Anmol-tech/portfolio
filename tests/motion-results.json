@@ -1,0 +1,20 @@
+[
+  {
+    "status": "PASS",
+    "reduced": false,
+    "state": "on",
+    "failures": []
+  },
+  {
+    "status": "PASS",
+    "reduced": true,
+    "state": "reduced",
+    "failures": []
+  },
+  {
+    "status": "PASS",
+    "reduced": false,
+    "state": "on",
+    "failures": []
+  }
+]

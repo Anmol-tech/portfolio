@@ -1,0 +1,56 @@
+[
+  [
+    "C++",
+    "Python",
+    "Java",
+    "TypeScript",
+    "JavaScript",
+    "SQL"
+  ],
+  [
+    "FastAPI",
+    "Django REST Framework",
+    "Spring Boot",
+    "PostgreSQL",
+    "Redis",
+    "GraphQL",
+    "Elasticsearch",
+    "SQLite",
+    "pgvector",
+    "ARQ"
+  ],
+  [
+    "React",
+    "Next.js",
+    "Vite",
+    "HTML/CSS",
+    "Accessible UI"
+  ],
+  [
+    "LLM Evaluation",
+    "RAG",
+    "Vision-Language Models",
+    "Agent Orchestration",
+    "OCR",
+    "Hugging Face",
+    "LangGraph",
+    "LangChain",
+    "MCP"
+  ],
+  [
+    "AWS",
+    "GCP",
+    "Docker",
+    "CI/CD",
+    "Linux",
+    "Git",
+    "nginx",
+    "Cloudflare Tunnel",
+    "GitLab CI"
+  ],
+  [
+    "Claude Code",
+    "OpenAI Codex",
+    "Cursor"
+  ]
+]
